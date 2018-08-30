@@ -24,7 +24,7 @@
         android:progress="2" />
 
     <TextView
-        android:id="@+id/txttest"
+        android:id="@+id/txttestSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -38,9 +38,23 @@
 
 
     <Spinner
-        android:id="@+id/SpinnerFont"
+        android:id="@+id/spinnerFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txttestFont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="متن تست" />
+
+
+    <Button
+        android:id="@+id/btnsabt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="اعمال تغییرات" />
 
 
 </LinearLayout>

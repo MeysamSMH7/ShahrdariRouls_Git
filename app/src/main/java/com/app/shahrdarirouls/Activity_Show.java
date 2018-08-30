@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -15,7 +14,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -47,6 +45,7 @@ public class Activity_Show extends AppCompatActivity {
     DrawerLayout drawerLayout_sr1;
     NavigationView navigationview_sr1;
     int idpost;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -56,12 +55,6 @@ public class Activity_Show extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_show);
-
-
-
-
-
-
 
 
         int NumID = 1;
@@ -86,14 +79,14 @@ public class Activity_Show extends AppCompatActivity {
         lstPI_SH_showPage = dataSource.GetRecord(NumID);
         dataSource.Close();
 
-       // String replaced_MadeNum = lstPI_SH_showPage.MadeNum.replace(".", "_");
-       // String replaced_Tabsare = lstPI_SH_showPage.Tabsare.replace(".", "_");
-       // String[] splited_MadeNum = replaced_MadeNum.split("_");
-        //String[] splited_Tabsare = replaced_Tabsare.split("_");
+        String replaced_MadeNum = lstPI_SH_showPage.MadeNum.replace(".", "_");
+        String replaced_Tabsare = lstPI_SH_showPage.Tabsare.replace(".", "_");
+        String[] splited_MadeNum = replaced_MadeNum.split("_");
+        String[] splited_Tabsare = replaced_Tabsare.split("_");
 
         RoulName.setText("نام قانون: " + lstPI_SH_showPage.RoulsNAme + "");
-        Made.setText("شماره ی ماده: " + lstPI_SH_showPage.MadeNum + "");
-        Tabsare.setText("تبصره: " + lstPI_SH_showPage.Tabsare + "");
+        Made.setText("شماره ی ماده: " + splited_MadeNum[0] + "");
+        Tabsare.setText("تبصره: " + splited_Tabsare[0] + "");
         SharhZero.setText("شرح صفر: " + lstPI_SH_showPage.SharhZERO + "");
         SharhOne.setText("شرح یک: " + lstPI_SH_showPage.SharhOne + "");
         SharhTwo.setText("شرح دو: " + lstPI_SH_showPage.SharhTwo + "");
@@ -116,7 +109,6 @@ public class Activity_Show extends AppCompatActivity {
                                 ShoraMashmol.getText().toString() + "\n" +
                                 txt.getText().toString()
                 );
-//                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "iran");
                 startActivity(Intent.createChooser(shareIntent, "اشتراک گذاری در ..."));
             }
         });
@@ -142,37 +134,23 @@ public class Activity_Show extends AppCompatActivity {
         bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(Activity_Show.this, "به علاقه مندی ها اضافه شد", Toast.LENGTH_SHORT).show();
-               // idpost = lstPI_SH_showPage.PK_Shahrdari;
 
                 tb_Favorite data = new tb_Favorite();
                 data.IdPost = lstPI_SH_showPage.PK_Shahrdari;
-
-//                Toast.makeText(Activity_Show.this,idpost+"", Toast.LENGTH_SHORT).show();
-
-
 
                 tb_FavoriteDATASource dataSource = new tb_FavoriteDATASource(Activity_Show.this);
                 dataSource.Open();
                 long id = dataSource.Add(data);
 
-                if (id == -1){
-                    Toast.makeText(Activity_Show.this, "ridi", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(Activity_Show.this, "raft", Toast.LENGTH_SHORT).show();
+                if (id == -1) {
+                    Toast.makeText(Activity_Show.this, "با مشکل روبه رو شد!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Activity_Show.this, "به علاقه مندی ها اضافه شد", Toast.LENGTH_SHORT).show();
+                    bookmark.setVisibility(View.GONE);
                 }
-
                 dataSource.Close();
-
-
-
             }
         });
-
-
-
-
-
 
 
     }
