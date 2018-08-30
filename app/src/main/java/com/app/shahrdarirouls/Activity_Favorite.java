@@ -36,7 +36,7 @@ ArrayAdapter arrayAdapter;
 
 
 
-        // اااااا
+        // asdfsdafsdf
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
 
