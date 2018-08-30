@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <Button
+        android:id="@+id/btnLstFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="حذف"
+        android:layout_weight="0.8" />
+    <TextView
+        android:id="@+id/txtLstFav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="متن علاقه مندی ها"
+        android:gravity="center|right"
+        android:paddingRight="7dp"
+        android:layout_weight="0.2" />
+
+</LinearLayout>
