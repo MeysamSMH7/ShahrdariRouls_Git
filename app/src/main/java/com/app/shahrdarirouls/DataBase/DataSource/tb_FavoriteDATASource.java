@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.app.shahrdarirouls.DataBase.DatabaseManagement;
+import com.app.shahrdarirouls.DataBase.MyDateBase;
 import com.app.shahrdarirouls.DataBase.Structure.tb_FavoriteStructure;
 import com.app.shahrdarirouls.DataBase.Table.tb_Favorite;
 
@@ -21,7 +22,7 @@ import java.util.List;
 public class tb_FavoriteDATASource {
 
     private SQLiteDatabase database;
-    private DatabaseManagement dbManagement;
+    private MyDateBase dbManagement;
 
 
 
@@ -31,7 +32,7 @@ public class tb_FavoriteDATASource {
     };
 
     public tb_FavoriteDATASource(Context context) {
-        dbManagement = new DatabaseManagement(context);
+        dbManagement = new MyDateBase(context);
     }
 
     public void Open() throws SQLException {
@@ -55,6 +56,12 @@ public class tb_FavoriteDATASource {
 
     public long QueryNumEntries() {
         return DatabaseUtils.queryNumEntries(database, tb_FavoriteStructure.tableName);
+    }
+
+    public void Delete(int id){
+        database.delete(tb_FavoriteStructure.tableName,
+                tb_FavoriteStructure.colIdPost + "=" + id,
+                null);
     }
 
     public tb_Favorite GetRecord() {

@@ -34,7 +34,9 @@ ArrayAdapter arrayAdapter;
         data = tb_favoriteDATASource.GetList();
         tb_favoriteDATASource.Close();
 
-// kossher
+        // kossher
+
+
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
 

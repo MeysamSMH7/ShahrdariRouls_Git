@@ -15,25 +15,19 @@ import com.app.shahrdarirouls.DataBase.Structure.tb_ShardariRoulsStructure;
 public class DatabaseManagement extends SQLiteOpenHelper {
     public static final String databaseName = "MyDbJafar.db";
     public static final int databaseVersion = 1;
-    public static final int newdatabaseVersion = 2;
 
 
     public DatabaseManagement(Context context) {
-        super(context, databaseName, null, newdatabaseVersion);
+        super(context, databaseName, null, databaseVersion);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL(tb_ShardariRoulsStructure.createTableQuery);
+        db.execSQL(tb_ShardariRoulsStructure.createTableQuery);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if(oldVersion == 1) {
-            db.execSQL(tb_ShardariRoulsStructure.createTableQuery);
-        }else if (oldVersion == 2){
-                db.execSQL(tb_FavoriteStructure.createTableQuery);
-        }
-        //db.execSQL(tb_FavoriteStructure.createTableQuery);
+
     }
 }

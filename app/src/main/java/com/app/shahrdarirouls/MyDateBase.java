@@ -1,11 +1,10 @@
-package com.app.shahrdarirouls.DataBase;
+package com.app.shahrdarirouls;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.app.shahrdarirouls.DataBase.Structure.tb_FavoriteStructure;
-import com.app.shahrdarirouls.DataBase.Structure.tb_ShardariRoulsStructure;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class MyDateBase extends SQLiteAssetHelper {
