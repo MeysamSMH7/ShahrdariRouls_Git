@@ -34,9 +34,8 @@ ArrayAdapter arrayAdapter;
         data = tb_favoriteDATASource.GetList();
         tb_favoriteDATASource.Close();
 
+        //mamad
 
-
-        // 5655655
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
 
