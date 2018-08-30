@@ -21,9 +21,10 @@ public class Activity_Favorite extends AppCompatActivity {
 
     List<tb_Favorite> data;
     ListView lstFavorite;
-//    UserList listViewPersonAdapter;
-    String[] asd = {"sadf","asdfa","asdfa","asdfa","asdfa","asdfa","asdfa"};
-ArrayAdapter arrayAdapter;
+    //    UserList listViewPersonAdapter;
+    String[] asd = {"sadf", "asdfa", "asdfa", "asdfa", "asdfa", "asdfa", "asdfa"};
+    ArrayAdapter arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ ArrayAdapter arrayAdapter;
                 Button btnLstFav = (Button) convertView.findViewById(R.id.btnLstFav);
 
 
-                txtLstFav.setText(data.get(position).IdPost+"\n");
+                txtLstFav.setText(data.get(position).IdPost + "\n");
                 txtLstFav.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -72,19 +73,6 @@ ArrayAdapter arrayAdapter;
             }
         };
         lstFavorite.setAdapter(adapterFavorite);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //        listViewPersonAdapter = new UserList(Activity_Favorite.this, data , iListSelectItemCallback, R.layout.row_lst_favorite);

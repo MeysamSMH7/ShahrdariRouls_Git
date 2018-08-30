@@ -32,6 +32,8 @@ public class Activity_Setting extends AppCompatActivity {
     int numberProgressAfter = 10, spinnerSelection = 0, spinnerSelectionAfter = 0;
     boolean chengeSetting = false;
 
+    SharedPreferences shared;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -49,8 +51,7 @@ public class Activity_Setting extends AppCompatActivity {
         txttestSize = (TextView) findViewById(R.id.txttestSize);
         txttestFont = (TextView) findViewById(R.id.txttestFont);
         btnsabt = (Button) findViewById(R.id.btnsabt);
-
-        final SharedPreferences shared = getSharedPreferences("prefes", 0);
+        shared = getSharedPreferences("prefes", 0);
         final int Size = shared.getInt("size?", 16);
         txttestSize.setTextSize(Size);
         seekBarFont.setProgress((Size - 10) / 3);
@@ -108,8 +109,7 @@ public class Activity_Setting extends AppCompatActivity {
                             .setMessage("برای اعمال تغییرات باید برنامه رو ریست کنید؟")
                             .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    final SharedPreferences shared = getSharedPreferences("prefes", 0);
-                                    SharedPreferences.Editor editor = shared.edit();
+                                     SharedPreferences.Editor editor = shared.edit();
 
                                     // save Size
                                     editor.putInt("size?", numberProgressAfter);
