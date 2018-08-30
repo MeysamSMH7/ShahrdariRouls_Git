@@ -34,12 +34,10 @@ ArrayAdapter arrayAdapter;
         data = tb_favoriteDATASource.GetList();
         tb_favoriteDATASource.Close();
 
-        //dastan
 
 
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
-
 
         final ArrayAdapter adapterFavorite = new ArrayAdapter(Activity_Favorite.this, R.layout.activity_favorite, data) {
             @NonNull
