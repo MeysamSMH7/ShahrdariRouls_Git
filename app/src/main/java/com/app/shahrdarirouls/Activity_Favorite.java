@@ -34,7 +34,7 @@ ArrayAdapter arrayAdapter;
         data = tb_favoriteDATASource.GetList();
         tb_favoriteDATASource.Close();
 
-
+        //dastan
 
 
 
