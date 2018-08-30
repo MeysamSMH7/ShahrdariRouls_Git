@@ -34,13 +34,13 @@ ArrayAdapter arrayAdapter;
         data = tb_favoriteDATASource.GetList();
         tb_favoriteDATASource.Close();
 
-        // kossher
+
 
 
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
 
-
+        // kossher
         final ArrayAdapter adapterFavorite = new ArrayAdapter(Activity_Favorite.this, R.layout.activity_favorite, data) {
             @NonNull
             @Override
