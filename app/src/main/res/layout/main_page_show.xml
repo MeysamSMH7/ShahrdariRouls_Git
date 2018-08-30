@@ -16,8 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="right"
+        android:background="#86555c61"
         android:layoutDirection="rtl"
         app:headerLayout="@layout/header_sr"
+        app:itemTextColor="#fff"
         app:menu="@menu/dr_menu">
 
     </android.support.design.widget.NavigationView>

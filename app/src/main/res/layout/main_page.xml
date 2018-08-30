@@ -12,11 +12,12 @@
 
 
     <android.support.design.widget.NavigationView
-        android:background="#70686d71"
         android:id="@+id/navigationview_sr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="right"
+        android:background="#86555c61"
+        app:itemTextColor="#fff"
         android:layoutDirection="rtl"
         app:headerLayout="@layout/header_sr"
         app:menu="@menu/dr_menu">

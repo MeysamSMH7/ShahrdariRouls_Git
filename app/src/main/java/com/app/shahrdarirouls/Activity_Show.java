@@ -10,13 +10,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -218,18 +218,12 @@ public class Activity_Show extends AppCompatActivity {
         AlertDialog.Builder builder_َACUS2 = new AlertDialog.Builder(Activity_Show.this);
         LinearLayout linearLayout_ACUS2 = (LinearLayout) getLayoutInflater().inflate(R.layout.about_connect_us, null, false);
         TextView txtView_ACUS2 = (TextView) linearLayout_ACUS2.findViewById(R.id.txtView_ACUS);
-        Button btn_ACUS2 = (Button) linearLayout_ACUS2.findViewById(R.id.btn_ACUS);
-        btn_ACUS2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                about_connect_us.dismiss();
-            }
-        });
-        txtView_ACUS2.setText("این ارتباط با ماست");
+//        txtView_ACUS2.setText("این ارتباط با ماست");
+        txtView_ACUS2.setText(Html.fromHtml(getString(R.string.StringAboutUs)));
         builder_َACUS2.setView(linearLayout_ACUS2);
         about_connect_us = builder_َACUS2.create();
+        about_connect_us.getWindow().setBackgroundDrawableResource(R.color.transparent);
         about_connect_us.show();
-
 
     }
 
@@ -238,16 +232,10 @@ public class Activity_Show extends AppCompatActivity {
         AlertDialog.Builder builder_َACUS1 = new AlertDialog.Builder(Activity_Show.this);
         LinearLayout linearLayout_ACUS1 = (LinearLayout) getLayoutInflater().inflate(R.layout.about_connect_us, null, false);
         TextView txtView_ACUS1 = (TextView) linearLayout_ACUS1.findViewById(R.id.txtView_ACUS);
-        Button btn_ACUS1 = (Button) linearLayout_ACUS1.findViewById(R.id.btn_ACUS);
-        btn_ACUS1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                about_connect_us.dismiss();
-            }
-        });
         txtView_ACUS1.setText("این درباره ی ماست");
         builder_َACUS1.setView(linearLayout_ACUS1);
         about_connect_us = builder_َACUS1.create();
+        about_connect_us.getWindow().setBackgroundDrawableResource(R.color.transparent);
         about_connect_us.show();
 
 
