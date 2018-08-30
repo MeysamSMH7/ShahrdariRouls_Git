@@ -38,7 +38,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:text="عنوان"
-                android:textSize="17dp"
                 android:textStyle="bold" />
 
             <TextView
