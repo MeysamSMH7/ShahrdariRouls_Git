@@ -36,7 +36,7 @@ ArrayAdapter arrayAdapter;
 
 
 
-        // kossher
+        // asdfasdf
 
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
