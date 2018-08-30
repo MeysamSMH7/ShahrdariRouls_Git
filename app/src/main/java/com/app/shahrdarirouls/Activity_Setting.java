@@ -29,7 +29,8 @@ public class Activity_Setting extends AppCompatActivity {
     Button btnsabt;
     Spinner spinnerFont;
     TextView txttestSize, txttestFont;
-    int numberProgressAfter = 10,spinnerSelection = 0, spinnerSelectionAfter = 0;
+    int numberProgressAfter = 10, spinnerSelection = 0, spinnerSelectionAfter = 0;
+    boolean chengeSetting = false;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -53,6 +54,8 @@ public class Activity_Setting extends AppCompatActivity {
         final int Size = shared.getInt("size?", 16);
         txttestSize.setTextSize(Size);
         seekBarFont.setProgress((Size - 10) / 3);
+        spinnerSelection = shared.getInt("idSpinner?", 0);
+        spinnerFont.setSelection(spinnerSelection);
 
         ArrayAdapter arrayAdapter_Spinner = new ArrayAdapter(Activity_Setting.this, android.R.layout.simple_spinner_item, fontsName);
         spinnerFont.setAdapter(arrayAdapter_Spinner);
@@ -63,7 +66,6 @@ public class Activity_Setting extends AppCompatActivity {
                 font = fontsName[i];
                 Typeface custom_font = Typeface.createFromAsset(getAssets(), fonts[i]);
                 txttestFont.setTypeface(custom_font);
-
             }
 
             @Override
@@ -73,75 +75,71 @@ public class Activity_Setting extends AppCompatActivity {
         });
 
 
-        spinnerSelection = shared.getInt("idSpinner?", 0);
-        spinnerFont.setSelection(spinnerSelection);
-
-
         seekBarFont.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
                 txttestSize.setTextSize(i * 3 + 10);
                 numberProgressAfter = i * 3 + 10;
-
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                chengeSetting = true;
             }
         });
+
         btnsabt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                AlertDialog.Builder builder;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    builder = new AlertDialog.Builder(Activity_Setting.this, android.R.style.Theme_Material_Dialog_Alert);
+                if (chengeSetting == false) {
+                    Toast.makeText(Activity_Setting.this, "تغییراتی داده نشده", Toast.LENGTH_SHORT).show();
                 } else {
-                    builder = new AlertDialog.Builder(Activity_Setting.this);
+                    AlertDialog.Builder builder;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        builder = new AlertDialog.Builder(Activity_Setting.this, android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        builder = new AlertDialog.Builder(Activity_Setting.this);
+                    }
+                    builder.setTitle("ریست کردن برنامه")
+                            .setMessage("برای اعمال تغییرات باید برنامه رو ریست کنید؟")
+                            .setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    final SharedPreferences shared = getSharedPreferences("prefes", 0);
+                                    SharedPreferences.Editor editor = shared.edit();
+
+                                    // save Size
+                                    editor.putInt("size?", numberProgressAfter);
+                                    editor.commit();
+                                    Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+
+                                    // save Font
+                                    editor.putString("font?", font);
+                                    editor.putInt("idSpinner?", spinnerSelectionAfter);
+                                    editor.commit();
+
+                                    Toast.makeText(Activity_Setting.this, "تنظیمات ذخیره شد", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    seekBarFont.setProgress((Size - 10) / 3);
+                                    txttestSize.setTextSize(Size);
+                                    spinnerFont.setSelection(spinnerSelection);
+
+                                    Toast.makeText(Activity_Setting.this, "تنظیمات ذخیره نشد", Toast.LENGTH_SHORT).show();
+
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setCancelable(false)
+                            .show();
                 }
-                builder.setTitle("ریست کردن برنامه")
-                        .setMessage("برای اعمال تغییرات باید برنامه رو ریست کنید؟")
-                        .setPositiveButton("بله", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                final SharedPreferences shared = getSharedPreferences("prefes", 0);
-                                SharedPreferences.Editor editor = shared.edit();
-
-                                // save Size
-                                editor.putInt("size?", numberProgressAfter);
-                                editor.commit();
-                                Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
-                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(i);
-
-                                // save Font
-                                editor.putString("font?", font);
-                                editor.putInt("idSpinner?", spinnerSelectionAfter);
-                                editor.commit();
-
-                                Toast.makeText(Activity_Setting.this, "تنظیمات ذخیره شد", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNegativeButton("خیر", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                seekBarFont.setProgress((Size - 10) / 3);
-                                txttestSize.setTextSize(Size);
-                                spinnerFont.setSelection(spinnerSelection);
-
-                                Toast.makeText(Activity_Setting.this, "تنظیمات ذخیره نشد", Toast.LENGTH_SHORT).show();
-
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setCancelable(false)
-                        .show();
-
             }
         });
 
