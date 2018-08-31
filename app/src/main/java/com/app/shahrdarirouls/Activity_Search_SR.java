@@ -778,6 +778,7 @@ public class Activity_Search_SR extends AppCompatActivity {
                 recyclerviewSE.setAdapter(null);
             }
             tb_shahrdariroulsDATASource.Close();
+
         }
     }
 }
