@@ -36,8 +36,9 @@ public class Activity_Search_SR extends AppCompatActivity {
 
     List<Data> dataSERACH;
     List<tb_ShahrdariRouls> data;
+    List<tb_ShahrdariRouls> datatxt;
 
-    String[] ListViewItemsShora = new String[]{"تهران و ری و تجریش", "شوراهای اسلامیشهرستان، استان و شورای عالی استانها", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا", "شورای روستا و بخش", "شورای روستای عشایری", "شورای شهر", "شورای شهر و روستا", "شورای شهر وروستا", "شورای شهرستان", "شورای شهرستان،استان و عالی استانها", "شورای عالی استان", "شورای عالی استانها", "شوراي عالي استانها", "کلیه شوراها", "مالی", "مالی سایر شهرداری ها", "مالی کلانشهر و مراکز استان"};
+    String[] ListViewItemsShora = new String[]{"تهران و ری و تجریش", "شوراهای اسلامی شهرستان، استان و شورای عالی استانها", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا", "شورای روستا و بخش", "شورای روستای عشایری", "شورای شهر", "شورای شهر و روستا", "شورای شهر وروستا", "شورای شهرستان", "شورای شهرستان،استان و عالی استانها", "شورای عالی استان", "شورای عالی استانها", "شوراي عالي استانها", "کلیه شوراها", "مالی", "مالی سایر شهرداری ها", "مالی کلانشهر و مراکز استان"};
     String[] ListViewItemsSharh = new String[]{"اجاره و فروش", "اداره جلسات و اخطار مغایرت قانونی", "ادغام و انحلال و تبدیل به شهر", "ارسال مصوبات", "ارگانهای دولتی", "استفاده از درآمد", "استقراض ", "اطلاع رسانی", "افزایش و کاهش", "الزامات", "امانی", "اموال", "انتخاب شهردار", "اولین جلسه", "انتخاب", "انواع", "بودجه", "پاداش", "پاسخ گویی و استیضاح", "پلاک کوبی و ثبت", "پیشنهادات ", "تامین اعتبار بودجه شورای شهر", "تامین اعتبارات اجرای قانون نوسازی از محل درآمد 10 درصد قانون نوسازی", "تبعیت مقامات", "تجدید مناقصه", "تحقیق و تفحص", "تحلیف و سوگند", "تحویل", "تخلف و محکومیت و محرومیت و حل اختلاف", "تصرف در سپرده", "تطبیق", "تقسیط", "توازن بودجه", "تهران", "جانشین و تفویض اختیار و مسئولیت", "حد نصاب", "حساب مخصوص وصول عوارض", "حراج", "حسن انجام کار", "حسابرسی", "درآمد", "حفظ و حراست", "رسمیت و اعتبار", "دفاتر حسابداری", "سهم فرهنگ و خیریه و درمان", "شرکتهای دولتی", "شیوه عمل معاملات متوسط", "صندوق", "عوارض", "عدم حضور برندگان", "کالای انحصاری", "قرارداد", "مراحل حسابرسی", "کمیسیون", "مصرف اعتبارات در همان حوزه", "مزایده", "مفاصا حساب عوارض ملک", "معاملات", "مکان و زمان", "مناقصه محدود", "مناقصه", "موسسات وابسته", "مناقصه محدود و تجدید و ترک مناقصه", "مهلت و دوره زمانی", "میزان افزایش و کاهش", " نسبت تخصیص بودجه عمرانی", "نحوه انجام و شیوه عمل", "وصول و نگهداری", "نصاب", "هزینه", "هدف تشکیل و وظایف و اختیارات"};
 
     String STedtTxtSearchinTxt = "";
@@ -51,7 +52,8 @@ public class Activity_Search_SR extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        FontSize fontSize = new FontSize(this);fontSize.setFontSize();
+        FontSize fontSize = new FontSize(this);
+        fontSize.setFontSize();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_sr);
 
@@ -113,76 +115,24 @@ public class Activity_Search_SR extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                STedtTxtSearchinTxt = edtTxtSearchinTxt.getText().toString();
-
-                tb_ShahrdariroulsDATASource tb_shahrdariroulsDATASource = new tb_ShahrdariroulsDATASource(Activity_Search_SR.this);
-                tb_shahrdariroulsDATASource.Open();
-
-                if (STchBoxShar_01 != null || STchBoxShar_02 != null || STchBoxShar_03 != null || STchBoxShar_04 != null || STchBoxShar_05 != null || STchBoxShar_06 != null || STchBoxShar_07 != null || STchBoxShar_08 != null || STchBoxShar_09 != null || STchBoxShar_10 != null || STchBoxShar_11 != null || STchBoxShar_12 != null || STchBoxShar_13 != null || STchBoxShar_14 != null || STchBoxShar_15 != null || STchBoxShar_16 != null || STchBoxShar_17 != null || STchBoxShar_18 != null || STchBoxShar_19 != null || STchBoxShar_20 != null || STchBoxShar_21 != null || STchBoxShar_22 != null || STchBoxShar_23 != null || STchBoxShar_24 != null || STchBoxShar_25 != null || STchBoxShar_26 != null || STchBoxShar_27 != null || STchBoxShar_28 != null || STchBoxShar_29 != null || STchBoxShar_30 != null || STchBoxShar_31 != null || STchBoxShar_32 != null || STchBoxShar_33 != null || STchBoxShar_34 != null || STchBoxShar_36 != null || STchBoxShar_37 != null || STchBoxShar_38 != null || STchBoxShar_40 != null || STchBoxShar_41 != null || STchBoxShar_42 != null || STchBoxShar_43 != null || STchBoxShar_44 != null || STchBoxShar_45 != null || STchBoxShar_46 != null || STchBoxShar_47 != null || STchBoxShar_48 != null || STchBoxShar_49 != null || STchBoxShar_51 != null || STchBoxShar_52 != null || STchBoxShar_53 != null || STchBoxShar_54 != null || STchBoxShar_55 != null || STchBoxShar_56 != null || STchBoxShar_57 != null || STchBoxShar_58 != null || STchBoxShar_59 != null || STchBoxShar_61 != null || STchBoxShar_62 != null || STchBoxShar_63 != null || STchBoxShar_64 != null || STchBoxShar_65 != null || STchBoxShar_66 != null || STchBoxShar_67 != null || STchBoxShar_68 != null || STchBoxShar_69 != null || STchBoxShar_39 != null || STchBoxShar_70 != null || STchBoxShar_71 != null || STchBoxShar_72 != null || STchBoxShar_73 != null || STchBoxShar_74 != null || STchBoxShora_01 != null || STchBoxShora_02 != null || STchBoxShora_03 != null || STchBoxShora_04 != null || STchBoxShora_05 != null || STchBoxShora_06 != null || STchBoxShora_07 != null || STchBoxShora_08 != null || STchBoxShora_09 != null || STchBoxShora_10 != null || STchBoxShora_11 != null || STchBoxShora_12 != null || STchBoxShora_13 != null || STchBoxShora_14 != null || STchBoxShora_15 != null || STchBoxShora_16 != null || STchBoxShora_17 != null || STchBoxShora_18 != null || STchBoxShora_19 != null || STchBoxShora_20 != null || STchBoxShora_21 != null) {
-
-                    data = tb_shahrdariroulsDATASource.GetRecordByCompanyName(STchBoxShar_01, STchBoxShar_02, STchBoxShar_03, STchBoxShar_04, STchBoxShar_05, STchBoxShar_06, STchBoxShar_07, STchBoxShar_08, STchBoxShar_09, STchBoxShar_10, STchBoxShar_11, STchBoxShar_12, STchBoxShar_13, STchBoxShar_14, STchBoxShar_15, STchBoxShar_16, STchBoxShar_17, STchBoxShar_18, STchBoxShar_19, STchBoxShar_20, STchBoxShar_21, STchBoxShar_22, STchBoxShar_23, STchBoxShar_24, STchBoxShar_25, STchBoxShar_26, STchBoxShar_27, STchBoxShar_28, STchBoxShar_29, STchBoxShar_30, STchBoxShar_31, STchBoxShar_32, STchBoxShar_33, STchBoxShar_34, STchBoxShar_36, STchBoxShar_37, STchBoxShar_38, STchBoxShar_40, STchBoxShar_41, STchBoxShar_42, STchBoxShar_43, STchBoxShar_44, STchBoxShar_45, STchBoxShar_46, STchBoxShar_47, STchBoxShar_48, STchBoxShar_49, STchBoxShar_51, STchBoxShar_52, STchBoxShar_53, STchBoxShar_54, STchBoxShar_55, STchBoxShar_56, STchBoxShar_57, STchBoxShar_58, STchBoxShar_59, STchBoxShar_61, STchBoxShar_62, STchBoxShar_63, STchBoxShar_64, STchBoxShar_65, STchBoxShar_66, STchBoxShar_67, STchBoxShar_68, STchBoxShar_69, STchBoxShar_39, STchBoxShar_70, STchBoxShar_71, STchBoxShar_72, STchBoxShar_73, STchBoxShar_74, STchBoxShora_01, STchBoxShora_02, STchBoxShora_03, STchBoxShora_04, STchBoxShora_05, STchBoxShora_06, STchBoxShora_07, STchBoxShora_08, STchBoxShora_09, STchBoxShora_10, STchBoxShora_11, STchBoxShora_12, STchBoxShora_13, STchBoxShora_14, STchBoxShora_15, STchBoxShora_16, STchBoxShora_17, STchBoxShora_18, STchBoxShora_19, STchBoxShora_20, STchBoxShora_21);
-
-                    if (data != null) {
-                        if (!(STedtTxtSearchinTxt.equals(""))) {
-                            try {
-                                for (tb_ShahrdariRouls dat : data) {
-                                    if (dat.txtRouls.contains(STedtTxtSearchinTxt)) {
-                                        Toast.makeText(Activity_Search_SR.this, "موارد یافت شده", Toast.LENGTH_SHORT).show();
-                                        dataSERACH = fill_with_data();
-                                        adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
-                                        recyclerviewSE.setAdapter(adapterSE);
-                                        recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
-                                    }
-                                }
-                            } catch (Exception e) {
-                                Toast.makeText(Activity_Search_SR.this, "ارور در جستجو", Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            try {
-                                Toast.makeText(Activity_Search_SR.this, "موارد یافت شده", Toast.LENGTH_SHORT).show();
-                                dataSERACH = fill_with_data();
-                                adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
-                                recyclerviewSE.setAdapter(adapterSE);
-                                recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
-                            } catch (Exception e) {
-                                Toast.makeText(Activity_Search_SR.this, "ارور در جستجو", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    } else {
-                        Toast.makeText(Activity_Search_SR.this, "هیچ دیتایی وجود ندارد!", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-
-                    data = tb_shahrdariroulsDATASource.GetRecordByLike(STedtTxtSearchinTxt.equals("") ? null : STedtTxtSearchinTxt);
-                    if (data != null) {
-                        try {
-                            Toast.makeText(Activity_Search_SR.this, "موارد یافت شده", Toast.LENGTH_SHORT).show();
-                            dataSERACH = fill_with_data();
-                            adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
-                            recyclerviewSE.setAdapter(adapterSE);
-                            recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
-                        } catch (Exception e) {
-                            Toast.makeText(Activity_Search_SR.this, "ارور در جستجو", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(Activity_Search_SR.this, "هیچ دیتایی وجود ندارد!", Toast.LENGTH_SHORT).show();
-                    }
-                    tb_shahrdariroulsDATASource.Close();
-
-                }
-
-
+                ForbtnSearch();
             }
         });
-
-
-        //
     }
 
     public List<Data> fill_with_data() {
         List<Data> dataSERACH = new ArrayList<>();
         for (int i = data.size() - 1; i >= 0; i--) {
             dataSERACH.add(new Data(data.get(i).PK_Shahrdari + "", data.get(i).txtRouls + "", data.get(i).PK_Shahrdari));
+        }
+
+        return dataSERACH;
+    }
+
+    public List<Data> fill_with_data_txt(List<tb_ShahrdariRouls> dataSE) {
+        List<Data> dataSERACH = new ArrayList<>();
+        for (int i = dataSE.size() - 1; i >= 0; i--) {
+            dataSERACH.add(new Data(dataSE.get(i).PK_Shahrdari + "", dataSE.get(i).txtRouls + "", dataSE.get(i).PK_Shahrdari));
         }
 
         return dataSERACH;
@@ -195,7 +145,7 @@ public class Activity_Search_SR extends AppCompatActivity {
             case "تهران و ری و تجریش":
                 STchBoxShora_01 = ListViewItemsShora[position];
                 break;
-            case "شوراهای اسلامیشهرستان، استان و شورای عالی استانها":
+            case "شوراهای اسلامی شهرستان، استان و شورای عالی استانها":
                 STchBoxShora_02 = ListViewItemsShora[position];
                 break;
             case "شورای استان":
@@ -762,6 +712,72 @@ public class Activity_Search_SR extends AppCompatActivity {
             case "هدف تشکیل و وظایف و اختیارات":
                 STchBoxShar_74 = null;
                 break;
+        }
+    }
+
+    private void ForbtnSearch() {
+        STedtTxtSearchinTxt = edtTxtSearchinTxt.getText().toString();
+
+        tb_ShahrdariroulsDATASource tb_shahrdariroulsDATASource = new tb_ShahrdariroulsDATASource(Activity_Search_SR.this);
+        tb_shahrdariroulsDATASource.Open();
+
+
+        if (STchBoxShar_01 != null || STchBoxShar_02 != null || STchBoxShar_03 != null || STchBoxShar_04 != null || STchBoxShar_05 != null || STchBoxShar_06 != null || STchBoxShar_07 != null || STchBoxShar_08 != null || STchBoxShar_09 != null || STchBoxShar_10 != null || STchBoxShar_11 != null || STchBoxShar_12 != null || STchBoxShar_13 != null || STchBoxShar_14 != null || STchBoxShar_15 != null || STchBoxShar_16 != null || STchBoxShar_17 != null || STchBoxShar_18 != null || STchBoxShar_19 != null || STchBoxShar_20 != null || STchBoxShar_21 != null || STchBoxShar_22 != null || STchBoxShar_23 != null || STchBoxShar_24 != null || STchBoxShar_25 != null || STchBoxShar_26 != null || STchBoxShar_27 != null || STchBoxShar_28 != null || STchBoxShar_29 != null || STchBoxShar_30 != null || STchBoxShar_31 != null || STchBoxShar_32 != null || STchBoxShar_33 != null || STchBoxShar_34 != null || STchBoxShar_36 != null || STchBoxShar_37 != null || STchBoxShar_38 != null || STchBoxShar_40 != null || STchBoxShar_41 != null || STchBoxShar_42 != null || STchBoxShar_43 != null || STchBoxShar_44 != null || STchBoxShar_45 != null || STchBoxShar_46 != null || STchBoxShar_47 != null || STchBoxShar_48 != null || STchBoxShar_49 != null || STchBoxShar_51 != null || STchBoxShar_52 != null || STchBoxShar_53 != null || STchBoxShar_54 != null || STchBoxShar_55 != null || STchBoxShar_56 != null || STchBoxShar_57 != null || STchBoxShar_58 != null || STchBoxShar_59 != null || STchBoxShar_61 != null || STchBoxShar_62 != null || STchBoxShar_63 != null || STchBoxShar_64 != null || STchBoxShar_65 != null || STchBoxShar_66 != null || STchBoxShar_67 != null || STchBoxShar_68 != null || STchBoxShar_69 != null || STchBoxShar_39 != null || STchBoxShar_70 != null || STchBoxShar_71 != null || STchBoxShar_72 != null || STchBoxShar_73 != null || STchBoxShar_74 != null || STchBoxShora_01 != null || STchBoxShora_02 != null || STchBoxShora_03 != null || STchBoxShora_04 != null || STchBoxShora_05 != null || STchBoxShora_06 != null || STchBoxShora_07 != null || STchBoxShora_08 != null || STchBoxShora_09 != null || STchBoxShora_10 != null || STchBoxShora_11 != null || STchBoxShora_12 != null || STchBoxShora_13 != null || STchBoxShora_14 != null || STchBoxShora_15 != null || STchBoxShora_16 != null || STchBoxShora_17 != null || STchBoxShora_18 != null || STchBoxShora_19 != null || STchBoxShora_20 != null || STchBoxShora_21 != null) {
+
+            data = tb_shahrdariroulsDATASource.GetRecordByCompanyName(STchBoxShar_01, STchBoxShar_02, STchBoxShar_03, STchBoxShar_04, STchBoxShar_05, STchBoxShar_06, STchBoxShar_07, STchBoxShar_08, STchBoxShar_09, STchBoxShar_10, STchBoxShar_11, STchBoxShar_12, STchBoxShar_13, STchBoxShar_14, STchBoxShar_15, STchBoxShar_16, STchBoxShar_17, STchBoxShar_18, STchBoxShar_19, STchBoxShar_20, STchBoxShar_21, STchBoxShar_22, STchBoxShar_23, STchBoxShar_24, STchBoxShar_25, STchBoxShar_26, STchBoxShar_27, STchBoxShar_28, STchBoxShar_29, STchBoxShar_30, STchBoxShar_31, STchBoxShar_32, STchBoxShar_33, STchBoxShar_34, STchBoxShar_36, STchBoxShar_37, STchBoxShar_38, STchBoxShar_40, STchBoxShar_41, STchBoxShar_42, STchBoxShar_43, STchBoxShar_44, STchBoxShar_45, STchBoxShar_46, STchBoxShar_47, STchBoxShar_48, STchBoxShar_49, STchBoxShar_51, STchBoxShar_52, STchBoxShar_53, STchBoxShar_54, STchBoxShar_55, STchBoxShar_56, STchBoxShar_57, STchBoxShar_58, STchBoxShar_59, STchBoxShar_61, STchBoxShar_62, STchBoxShar_63, STchBoxShar_64, STchBoxShar_65, STchBoxShar_66, STchBoxShar_67, STchBoxShar_68, STchBoxShar_69, STchBoxShar_39, STchBoxShar_70, STchBoxShar_71, STchBoxShar_72, STchBoxShar_73, STchBoxShar_74, STchBoxShora_01, STchBoxShora_02, STchBoxShora_03, STchBoxShora_04, STchBoxShora_05, STchBoxShora_06, STchBoxShora_07, STchBoxShora_08, STchBoxShora_09, STchBoxShora_10, STchBoxShora_11, STchBoxShora_12, STchBoxShora_13, STchBoxShora_14, STchBoxShora_15, STchBoxShora_16, STchBoxShora_17, STchBoxShora_18, STchBoxShora_19, STchBoxShora_20, STchBoxShora_21);
+
+            if (data != null) {
+                if (!(STedtTxtSearchinTxt.equals(""))) {
+                    try {
+                        for (tb_ShahrdariRouls dat : data) {
+                            if (dat.txtRouls.contains(STedtTxtSearchinTxt)) {
+                                datatxt = new ArrayList<>();
+                                datatxt.add(dat);
+                            } else if (!(dat.txtRouls.contains(STedtTxtSearchinTxt))) {
+                                recyclerviewSE.setAdapter(null);
+                            }
+                        }
+                        dataSERACH = fill_with_data_txt(datatxt);
+                        adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
+                        recyclerviewSE.setAdapter(adapterSE);
+                        recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
+                    } catch (Exception e) {
+                        Toast.makeText(Activity_Search_SR.this, "ارور در جستجو", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    try {
+                        Toast.makeText(Activity_Search_SR.this, "موارد یافت شده", Toast.LENGTH_SHORT).show();
+                        dataSERACH = fill_with_data();
+                        adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
+                        recyclerviewSE.setAdapter(adapterSE);
+                        recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
+                    } catch (Exception e) {
+                        Toast.makeText(Activity_Search_SR.this, "ارور در جستجو", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            } else {
+                Toast.makeText(Activity_Search_SR.this, "هیچ دیتایی وجود ندارد!", Toast.LENGTH_SHORT).show();
+                recyclerviewSE.setAdapter(null);
+            }
+
+        } else if (STedtTxtSearchinTxt != null) {
+
+            data = tb_shahrdariroulsDATASource.GetRecordByLike(STedtTxtSearchinTxt.equals("") ? null : STedtTxtSearchinTxt);
+            if (data != null) {
+                try {
+                    Toast.makeText(Activity_Search_SR.this, "موارد یافت شده", Toast.LENGTH_SHORT).show();
+                    dataSERACH = fill_with_data();
+                    adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
+                    recyclerviewSE.setAdapter(adapterSE);
+                    recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
+                } catch (Exception e) {
+                    Toast.makeText(Activity_Search_SR.this, "ارور در جستجو", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(Activity_Search_SR.this, "هیچ دیتایی وجود ندارد!", Toast.LENGTH_SHORT).show();
+                recyclerviewSE.setAdapter(null);
+            }
+            tb_shahrdariroulsDATASource.Close();
         }
     }
 }
