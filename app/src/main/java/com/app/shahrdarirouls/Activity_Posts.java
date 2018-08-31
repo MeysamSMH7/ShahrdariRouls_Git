@@ -1,6 +1,7 @@
 package com.app.shahrdarirouls;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +30,8 @@ import com.app.shahrdarirouls.DataBase.MyDateBase;
 
 import java.io.File;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class Activity_Posts extends AppCompatActivity {
     private static final int Time_Between_Two_Back = 2000;
     private long TimeBackPressed;
@@ -40,6 +43,12 @@ public class Activity_Posts extends AppCompatActivity {
     AlertDialog pdf_selector, about_connect_us;
     DrawerLayout drawerLayout_sr;
     NavigationView navigationview_sr;
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
