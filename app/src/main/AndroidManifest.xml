@@ -18,6 +18,7 @@
         <activity android:name=".Activity_PDF_View" />
         <activity android:name=".Activity_Show" />
         <activity android:name=".Activity_Setting" />
+        <activity android:name=".Activity_Favorite" />
         <activity android:name=".Activity_Posts">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
