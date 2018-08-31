@@ -52,7 +52,7 @@ public class Activity_Posts extends AppCompatActivity {
         if (Build.VERSION.SDK_INT < 23) {
             return;
         } else {
-            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
         }
 
         db = new MyDateBase(Activity_Posts.this);
