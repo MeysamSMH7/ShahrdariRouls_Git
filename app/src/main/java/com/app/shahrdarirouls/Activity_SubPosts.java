@@ -34,7 +34,7 @@ public class Activity_SubPosts extends AppCompatActivity {
         dataSubPostDB = tb_shahrdariroulsDATASource.GetRecordBySubPosts(KeySub);
         recyclerviewSubPost= (RecyclerView) findViewById(R.id.recyclerviewSubPost);
         dataSubPost = fill_with_data();
-        adapterSubPost = new Recycler_View_Adapter(dataSubPost, getApplication());
+        adapterSubPost = new Recycler_View_Adapter(dataSubPost, Activity_SubPosts.this);
         recyclerviewSubPost.setAdapter(adapterSubPost);
         recyclerviewSubPost.setLayoutManager(new LinearLayoutManager(Activity_SubPosts.this));
 

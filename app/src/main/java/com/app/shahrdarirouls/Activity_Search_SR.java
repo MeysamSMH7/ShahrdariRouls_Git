@@ -738,7 +738,7 @@ public class Activity_Search_SR extends AppCompatActivity {
                             }
                         }
                         dataSERACH = fill_with_data_txt(datatxt);
-                        adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
+                        adapterSE = new Recycler_View_Adapter(dataSERACH, Activity_Search_SR.this);
                         recyclerviewSE.setAdapter(adapterSE);
                         recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
                     } catch (Exception e) {
@@ -748,7 +748,7 @@ public class Activity_Search_SR extends AppCompatActivity {
                     try {
                         Toast.makeText(Activity_Search_SR.this, "موارد یافت شده", Toast.LENGTH_SHORT).show();
                         dataSERACH = fill_with_data();
-                        adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
+                        adapterSE = new Recycler_View_Adapter(dataSERACH, Activity_Search_SR.this);
                         recyclerviewSE.setAdapter(adapterSE);
                         recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
                     } catch (Exception e) {
@@ -767,7 +767,7 @@ public class Activity_Search_SR extends AppCompatActivity {
                 try {
                     Toast.makeText(Activity_Search_SR.this, "موارد یافت شده", Toast.LENGTH_SHORT).show();
                     dataSERACH = fill_with_data();
-                    adapterSE = new Recycler_View_Adapter(dataSERACH, getApplication());
+                    adapterSE = new Recycler_View_Adapter(dataSERACH, Activity_Search_SR.this);
                     recyclerviewSE.setAdapter(adapterSE);
                     recyclerviewSE.setLayoutManager(new LinearLayoutManager(Activity_Search_SR.this));
                 } catch (Exception e) {
