@@ -36,8 +36,6 @@ public class Activity_Favorite extends AppCompatActivity {
         data = tb_favoriteDATASource.GetList();
         tb_favoriteDATASource.Close();
 
-        //mamad
-
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
 
@@ -54,8 +52,8 @@ public class Activity_Favorite extends AppCompatActivity {
                 txtLstFav.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(Activity_Favorite.this , Activity_Show.class);
-                        intent.putExtra("KEY" , data.get(position).IdPost+"");
+                        Intent intent = new Intent(Activity_Favorite.this, Activity_Show.class);
+                        intent.putExtra("KEY", data.get(position).IdPost + "");
                         startActivity(intent);
                     }
                 });
@@ -77,114 +75,5 @@ public class Activity_Favorite extends AppCompatActivity {
         };
         lstFavorite.setAdapter(adapterFavorite);
 
-
-//        listViewPersonAdapter = new UserList(Activity_Favorite.this, data , iListSelectItemCallback, R.layout.row_lst_favorite);
-//
-//        lstFavorite.setAdapter(listViewPersonAdapter);
-
-
     }
-
-
-//    UserList.IListSelectItemCallback iListSelectItemCallback = new UserList.IListSelectItemCallback() {
-//        @Override
-//        public void SelectedItemCallback(tb_Favorite info , Context context) {
-//            Intent intent= new Intent(Activity_Favorite.this,Activity_Show.class);
-//            intent.putExtra("KEY",info.IdPost+"");
-//            context.startActivity(intent);
-//        }
-//
-//        @Override
-//        public void DirectCall_CallBack(int IdPost) {
-//            tb_FavoriteDATASource tb_favoriteDATASource = new tb_FavoriteDATASource(Activity_Favorite.this);
-//            tb_favoriteDATASource.Open();
-//            tb_favoriteDATASource.Delete(IdPost);
-//            tb_favoriteDATASource.Close();
-//        }
-//    };
-
 }
-
-
-//class UserList extends BaseAdapter {
-//        private Context context;
-//        private List<tb_Favorite> lstPI;
-//        private IListSelectItemCallback _IListSelectItemCallback;
-//        private int _templateResourceId;
-//        private LayoutInflater inflater = null;
-//
-//        TextView txtLstFav;
-//        Button btnLstFav;
-//
-//
-//
-//    public interface IListSelectItemCallback {
-//        public void SelectedItemCallback(tb_Favorite info , Context context);
-//
-//        public void DirectCall_CallBack(int IdPost);
-//    }
-//
-//    public UserList(Context activity, List<tb_Favorite> listPerson, IListSelectItemCallback iListSelectItemCallback, int templateResourceId) {
-//        context = activity;
-//        lstPI = listPerson;
-//        _IListSelectItemCallback = iListSelectItemCallback;
-//        _templateResourceId = templateResourceId;
-//
-//        inflater = LayoutInflater.from(context);
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        return lstPI.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//        return position;
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//        return position;
-//    }
-//
-//
-//    @Override
-//    public View getView(final int position, View convertView, ViewGroup parent) {
-//        final View rowView;
-//        rowView = inflater.inflate(_templateResourceId, null);
-//
-//        txtLstFav = (TextView) rowView.findViewById(R.id.txtLstFav);
-//
-//        btnLstFav = (Button) rowView.findViewById(R.id.btnLstFav);
-//
-//
-//        txtLstFav.setText(String.format("%s",
-//                lstPI.get(position).IdPost));
-//
-//
-//        btnLstFav.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (_IListSelectItemCallback != null) {
-//                    _IListSelectItemCallback.DirectCall_CallBack(lstPI.get(position).IdPost);
-//                    lstPI.remove(position);
-//                    notifyDataSetChanged();
-//                }
-//            }
-//        });
-//
-//        rowView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (_IListSelectItemCallback != null) {
-//                    _IListSelectItemCallback.SelectedItemCallback(lstPI.get(position) , context);
-//                }
-//            }
-//        });
-//
-//        return rowView;
-//    }
-//}
-
