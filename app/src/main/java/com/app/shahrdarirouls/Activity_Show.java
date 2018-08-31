@@ -46,6 +46,9 @@ public class Activity_Show extends AppCompatActivity {
     NavigationView navigationview_sr1;
     int idpost;
 
+
+    tb_FavoriteDATASource tb_favoriteDATASource;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -61,6 +64,7 @@ public class Activity_Show extends AppCompatActivity {
 
         String a = getIntent().getStringExtra("KEY");
         NumID = Integer.parseInt(a);
+
 
         bookmark = (ImageView) findViewById(R.id.bookmark);
         share = (ImageView) findViewById(R.id.share);
@@ -131,26 +135,33 @@ public class Activity_Show extends AppCompatActivity {
         });
 
 
-        bookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        tb_favoriteDATASource = new tb_FavoriteDATASource(Activity_Show.this);
+        tb_favoriteDATASource.Open();
+        if (tb_favoriteDATASource.ExistinFavorite(NumID)) {
+            bookmark.setVisibility(View.GONE);
+        } else {
+            bookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                tb_Favorite data = new tb_Favorite();
-                data.IdPost = lstPI_SH_showPage.PK_Shahrdari;
+                    tb_Favorite data = new tb_Favorite();
+                    data.IdPost = lstPI_SH_showPage.PK_Shahrdari;
 
-                tb_FavoriteDATASource dataSource = new tb_FavoriteDATASource(Activity_Show.this);
-                dataSource.Open();
-                long id = dataSource.Add(data);
+                    tb_FavoriteDATASource dataSource = new tb_FavoriteDATASource(Activity_Show.this);
+                    dataSource.Open();
+                    long id = dataSource.Add(data);
 
-                if (id == -1) {
-                    Toast.makeText(Activity_Show.this, "با مشکل روبه رو شد!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Activity_Show.this, "به علاقه مندی ها اضافه شد", Toast.LENGTH_SHORT).show();
-                    bookmark.setVisibility(View.GONE);
+                    if (id == -1) {
+                        Toast.makeText(Activity_Show.this, "با مشکل روبه رو شد!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Activity_Show.this, "به علاقه مندی ها اضافه شد", Toast.LENGTH_SHORT).show();
+                        bookmark.setVisibility(View.GONE);
+                    }
+                    dataSource.Close();
                 }
-                dataSource.Close();
-            }
-        });
+            });
+        }
+        tb_favoriteDATASource.Close();
 
 
     }

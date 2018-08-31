@@ -94,6 +94,25 @@ public class tb_FavoriteDATASource {
         return data;
     }
 
+    public  Boolean ExistinFavorite(int IdPost){
+        try {
+            Cursor cursor=database.query(tb_FavoriteStructure.tableName,allColumns,
+                    tb_FavoriteStructure.colIdPost + "= " + IdPost ,
+                    null, null, null, null);
+            cursor.moveToFirst();
+
+            if (cursor.getCount() == 0){
+                return false;
+            }
+
+            tb_Favorite data=ConvertToRecord(cursor);
+            cursor.close();
+            return true;
+        }catch (Exception e){
+            return null;
+        }
+
+    }
 
 
     public List<tb_Favorite> GetList() {

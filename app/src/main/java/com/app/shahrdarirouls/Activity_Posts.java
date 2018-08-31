@@ -189,9 +189,6 @@ public class Activity_Posts extends AppCompatActivity {
         }
 
 
-//        tb_ShahrdariroulsDATASource tbJafarDataSource = new tb_ShahrdariroulsDATASource(Activity_Posts.this);
-//        tbJafarDataSource.Open();
-
         ExcelToSQLite excelToSQLite = new ExcelToSQLite(getApplicationContext(), MyDateBase.DATABASE_NAME, true);
         // Import EXCEL FILE to SQLite
         excelToSQLite.importFromFile(directory_path, new ExcelToSQLite.ImportListener() {
@@ -211,7 +208,6 @@ public class Activity_Posts extends AppCompatActivity {
                 Log.d("mamad", e.getMessage());
             }
         });
-//        tbJafarDataSource.Close();
 
     }
 
