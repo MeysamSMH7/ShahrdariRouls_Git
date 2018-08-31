@@ -56,6 +56,8 @@ public class Activity_Show extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FontSize fontSize = new FontSize(this);
+        fontSize.setFontSize();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_show);
 
