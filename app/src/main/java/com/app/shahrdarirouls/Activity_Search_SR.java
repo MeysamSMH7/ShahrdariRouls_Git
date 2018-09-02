@@ -123,7 +123,7 @@ public class Activity_Search_SR extends AppCompatActivity {
     public List<Data> fill_with_data() {
         List<Data> dataSERACH = new ArrayList<>();
         for (int i = data.size() - 1; i >= 0; i--) {
-            dataSERACH.add(new Data(data.get(i).PK_Shahrdari + "", data.get(i).txtRouls + "", data.get(i).PK_Shahrdari));
+            dataSERACH.add(new Data(data.get(i).RoulsNAme + "", data.get(i).txtRouls + "", data.get(i).PK_Shahrdari));
         }
 
         return dataSERACH;

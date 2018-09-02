@@ -36,14 +36,32 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class Activity_Posts extends AppCompatActivity {
     private static final int Time_Between_Two_Back = 2000;
     private long TimeBackPressed;
+//    private MyDateBase db;
     private DatabaseManagement db;
 
-    String[] lstNameMain = {"تهران و ری و تجریش", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا", "شورای روستا و بخش", "شورای روستای عشایری", "شورای شهر", "شورای شهر و روستا", "شورای شهر وروستا", "شورای شهرستان", "شورای شهرستان،استان و عالی استانها", "شورای عالی استان", "شورای عالی استانها", "شوراي عالي استانها", "کلیه شوراها", "مالی", "مالی سایر شهرداری ها", "مالی کلانشهر و مراکز استان"};
+    //    String[] lstNameMain = {"تهران و ری و تجریش", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا", "شورای روستا و بخش", "شورای روستای عشایری", "شورای شهر", "شورای شهر و روستا", "شورای شهر وروستا", "شورای شهرستان", "شورای شهرستان،استان و عالی استانها", "شورای عالی استان", "شورای عالی استانها", "شوراي عالي استانها", "کلیه شوراها", "مالی", "مالی سایر شهرداری ها", "مالی کلانشهر و مراکز استان"};
+    String[] lstNameMain = {
+            "کتاب1", "کتاب2", "کتاب3", "کتاب4", "کتاب5", "کتاب6", "کتاب7", "کتاب8", "کتاب9", "کتاب10", "کتاب11",
+            "کتاب1", "کتاب2", "کتاب3", "کتاب4", "کتاب5", "کتاب6", "کتاب7", "کتاب8", "کتاب9", "کتاب10", "کتاب11",
+            "جستجو" , "ممد"};
+
+    int[] lstPicMain = {
+            R.drawable.add, R.drawable.about_us, R.drawable.bookmark, R.drawable.building,
+            R.drawable.building_icon, R.drawable.cityscape, R.drawable.contact, R.drawable.ebook,
+            R.drawable.menu, R.drawable.logout, R.drawable.share, R.drawable.share,
+            R.drawable.add, R.drawable.about_us, R.drawable.bookmark, R.drawable.building,
+            R.drawable.building_icon, R.drawable.cityscape, R.drawable.contact, R.drawable.ebook,
+            R.drawable.menu, R.drawable.logout,
+
+            R.drawable.search,R.drawable.search
+    };
+
     String[] pdfNames = {"پی دی اف یک", "پی دی اف دو", "پی دی اف سه", "پی دی اف چهار", "پی دی اف پنج", "پی دی اف شش"};
 
     AlertDialog pdf_selector, about_connect_us;
     DrawerLayout drawerLayout_sr;
     NavigationView navigationview_sr;
+
 
 
     @Override
@@ -75,14 +93,25 @@ public class Activity_Posts extends AppCompatActivity {
         setSupportActionBar(toolbar_sr);
 
         GridView lstGVMain = (GridView) findViewById(R.id.lstGVMain);
-        CustomGridView customGridView = new CustomGridView(Activity_Posts.this, lstNameMain);
+        CustomGridView customGridView = new CustomGridView(Activity_Posts.this, lstNameMain, lstPicMain);
         lstGVMain.setAdapter(customGridView);
         lstGVMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(Activity_Posts.this, Activity_SubPosts.class);
-                intent.putExtra("KeyPost", lstNameMain[i] + "");
-                startActivity(intent);
+//                Intent intent = new Intent(Activity_Posts.this, Activity_SubPosts.class);
+
+                if (i == 22) {
+                    Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
+                    startActivity(intentSerach);
+                }else if (i == 23){
+                    Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
+                    startActivity(intentSerach);
+                } else {
+                    Intent intent = new Intent(Activity_Posts.this, Activity_PDF_View.class);
+                    intent.putExtra("KeyPDF", lstNameMain[i] + "");
+                    startActivity(intent);
+                }
+
 
             }
         });
