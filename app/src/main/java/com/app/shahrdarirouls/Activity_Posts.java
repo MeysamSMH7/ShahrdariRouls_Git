@@ -103,9 +103,6 @@ public class Activity_Posts extends AppCompatActivity {
                 if (i == 22) {
                     Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
                     startActivity(intentSerach);
-                }else if (i == 23){
-                    Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
-                    startActivity(intentSerach);
                 } else {
                     Intent intent = new Intent(Activity_Posts.this, Activity_PDF_View.class);
                     intent.putExtra("KeyPDF", lstNameMain[i] + "");
