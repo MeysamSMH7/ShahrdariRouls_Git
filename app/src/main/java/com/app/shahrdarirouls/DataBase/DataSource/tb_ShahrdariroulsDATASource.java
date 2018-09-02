@@ -31,9 +31,7 @@ public class tb_ShahrdariroulsDATASource {
             tb_ShardariRoulsStructure.colroulName,
             tb_ShardariRoulsStructure.colmAde,
             tb_ShardariRoulsStructure.coltAbsare,
-            tb_ShardariRoulsStructure.colsHarhSefr,
             tb_ShardariRoulsStructure.colsHarhOne,
-            tb_ShardariRoulsStructure.colsHarhTwo,
             tb_ShardariRoulsStructure.colsHoraMashmol,
             tb_ShardariRoulsStructure.coltxt
 
@@ -59,9 +57,7 @@ public class tb_ShahrdariroulsDATASource {
         values.put(tb_ShardariRoulsStructure.colroulName, data.RoulsNAme);
         values.put(tb_ShardariRoulsStructure.colmAde, data.MadeNum);
         values.put(tb_ShardariRoulsStructure.coltAbsare, data.Tabsare);
-        values.put(tb_ShardariRoulsStructure.colsHarhSefr, data.SharhZERO);
         values.put(tb_ShardariRoulsStructure.colsHarhOne, data.SharhOne);
-        values.put(tb_ShardariRoulsStructure.colsHarhTwo, data.SharhTwo);
         values.put(tb_ShardariRoulsStructure.colsHoraMashmol, data.ShoraiMashmol);
         values.put(tb_ShardariRoulsStructure.coltxt, data.txtRouls);
 
@@ -437,11 +433,9 @@ public class tb_ShahrdariroulsDATASource {
         data.RoulsNAme = cursor.getString(1);
         data.MadeNum = cursor.getString(2);
         data.Tabsare = cursor.getString(3);
-        data.SharhZERO = cursor.getString(4);
-        data.SharhOne = cursor.getString(5);
-        data.SharhTwo = cursor.getString(6);
-        data.ShoraiMashmol = cursor.getString(7);
-        data.txtRouls = cursor.getString(8);
+        data.SharhOne = cursor.getString(4);
+        data.ShoraiMashmol = cursor.getString(5);
+        data.txtRouls = cursor.getString(6);
 
         return data;
     }

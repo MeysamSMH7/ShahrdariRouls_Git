@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.app.shahrdarirouls.DataBase.DataSource.tb_FavoriteDATASource;
 import com.app.shahrdarirouls.DataBase.DataSource.tb_ShahrdariroulsDATASource;
 import com.app.shahrdarirouls.DataBase.DatabaseManagement;
+import com.app.shahrdarirouls.DataBase.MyDateBase;
 import com.app.shahrdarirouls.DataBase.Table.tb_Favorite;
 import com.app.shahrdarirouls.DataBase.Table.tb_ShahrdariRouls;
 
@@ -74,9 +75,7 @@ public class Activity_Show extends AppCompatActivity {
         RoulName = (TextView) findViewById(R.id.RoulName);
         Made = (TextView) findViewById(R.id.Made);
         Tabsare = (TextView) findViewById(R.id.Tabsare);
-        SharhZero = (TextView) findViewById(R.id.SharhZero);
         SharhOne = (TextView) findViewById(R.id.SharhOne);
-        SharhTwo = (TextView) findViewById(R.id.SharhTwo);
         ShoraMashmol = (TextView) findViewById(R.id.ShoraMashmol);
         txt = (TextView) findViewById(R.id.txt);
 
@@ -93,9 +92,7 @@ public class Activity_Show extends AppCompatActivity {
         RoulName.setText("نام قانون: " + lstPI_SH_showPage.RoulsNAme + "");
         Made.setText("شماره ی ماده: " + splited_MadeNum[0] + "");
         Tabsare.setText("تبصره: " + splited_Tabsare[0] + "");
-        SharhZero.setText("شرح صفر: " + lstPI_SH_showPage.SharhZERO + "");
         SharhOne.setText("شرح یک: " + lstPI_SH_showPage.SharhOne + "");
-        SharhTwo.setText("شرح دو: " + lstPI_SH_showPage.SharhTwo + "");
         ShoraMashmol.setText("شورای مشمول: " + lstPI_SH_showPage.ShoraiMashmol + "");
         txt.setText("متن:" + "\n" + lstPI_SH_showPage.txtRouls + "");
 
@@ -267,7 +264,7 @@ public class Activity_Show extends AppCompatActivity {
         tb_ShahrdariroulsDATASource tbJafarDataSource = new tb_ShahrdariroulsDATASource(Activity_Show.this);
         tbJafarDataSource.Open();
 
-        ExcelToSQLite excelToSQLite = new ExcelToSQLite(getApplicationContext(), DatabaseManagement.databaseName, false);
+        ExcelToSQLite excelToSQLite = new ExcelToSQLite(getApplicationContext(), MyDateBase.DATABASE_NAME, true);
         // Import EXCEL FILE to SQLite
         excelToSQLite.importFromFile(directory_path, new ExcelToSQLite.ImportListener() {
             @Override

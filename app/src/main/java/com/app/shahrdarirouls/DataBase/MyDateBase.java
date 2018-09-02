@@ -10,7 +10,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class MyDateBase extends SQLiteAssetHelper {
 
-    public static final String DATABASE_NAME = "MyDbJafar.db";
+    public static final String DATABASE_NAME = "MyDbShardari.db";
     private static final int DATABASE_VERSION = 1;
     private static final int NEWDATABASE_VERSION = 2;
 

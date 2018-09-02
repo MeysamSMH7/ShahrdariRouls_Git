@@ -13,9 +13,7 @@ public class tb_ShardariRoulsStructure {
     public static final String colroulName = "roulName";
     public static final String colmAde = "mAde";
     public static final String coltAbsare = "tAbsare";
-    public static final String colsHarhSefr = "sHarhSefr";
     public static final String colsHarhOne = "sHarhOne";
-    public static final String colsHarhTwo = "sHarhTwo";
     public static final String colsHoraMashmol = "sHoraMashmol";
     public static final String coltxt = "txt";
 
@@ -24,9 +22,7 @@ public class tb_ShardariRoulsStructure {
             colroulName + " text, " +
             colmAde + " text, " +
             coltAbsare + " text, " +
-            colsHarhSefr + " text, " +
             colsHarhOne + " text, " +
-            colsHarhTwo + " text, " +
             colsHoraMashmol + " text, " +
             coltxt + " text" +
             ")";

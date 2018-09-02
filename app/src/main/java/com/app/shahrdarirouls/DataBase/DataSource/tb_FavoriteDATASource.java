@@ -7,8 +7,8 @@ import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.app.shahrdarirouls.DataBase.DatabaseManagement;
 import com.app.shahrdarirouls.DataBase.MyDateBase;
+//import com.app.shahrdarirouls.DataBase.MyDateBase;
 import com.app.shahrdarirouls.DataBase.Structure.tb_FavoriteStructure;
 import com.app.shahrdarirouls.DataBase.Table.tb_Favorite;
 

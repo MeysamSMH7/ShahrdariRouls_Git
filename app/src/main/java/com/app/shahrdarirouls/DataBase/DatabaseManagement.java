@@ -13,7 +13,7 @@ import com.app.shahrdarirouls.DataBase.Structure.tb_ShardariRoulsStructure;
 
 
 public class DatabaseManagement extends SQLiteOpenHelper {
-    public static final String databaseName = "MyDbJafar.db";
+    public static final String databaseName = "MyDbShahrdari.db";
     public static final int databaseVersion = 1;
 
 

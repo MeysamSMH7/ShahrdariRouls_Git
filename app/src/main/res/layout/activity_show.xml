@@ -62,25 +62,11 @@
                 android:text="تبصره" />
 
             <TextView
-                android:id="@+id/SharhZero"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="شرح صفر" />
-
-            <TextView
                 android:id="@+id/SharhOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="شرح یک" />
-
-            <TextView
-                android:id="@+id/SharhTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="شرح دو" />
 
             <TextView
                 android:id="@+id/ShoraMashmol"

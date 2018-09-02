@@ -9,9 +9,7 @@ public class tb_ShahrdariRouls {
     public String RoulsNAme;
     public String MadeNum;
     public String Tabsare;
-    public String SharhZERO;
     public String SharhOne;
-    public String SharhTwo;
     public String ShoraiMashmol;
     public String txtRouls;
  }

@@ -26,6 +26,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.shahrdarirouls.DataBase.DatabaseManagement;
 import com.app.shahrdarirouls.DataBase.MyDateBase;
 
 import java.io.File;
@@ -35,7 +36,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class Activity_Posts extends AppCompatActivity {
     private static final int Time_Between_Two_Back = 2000;
     private long TimeBackPressed;
-    private MyDateBase db;
+    private DatabaseManagement db;
 
     String[] lstNameMain = {"تهران و ری و تجریش", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا", "شورای روستا و بخش", "شورای روستای عشایری", "شورای شهر", "شورای شهر و روستا", "شورای شهر وروستا", "شورای شهرستان", "شورای شهرستان،استان و عالی استانها", "شورای عالی استان", "شورای عالی استانها", "شوراي عالي استانها", "کلیه شوراها", "مالی", "مالی سایر شهرداری ها", "مالی کلانشهر و مراکز استان"};
     String[] pdfNames = {"پی دی اف یک", "پی دی اف دو", "پی دی اف سه", "پی دی اف چهار", "پی دی اف پنج", "پی دی اف شش"};
@@ -64,7 +65,7 @@ public class Activity_Posts extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
         }
 
-        db = new MyDateBase(Activity_Posts.this);
+        db = new DatabaseManagement(Activity_Posts.this);
 
         Toolbar toolbar_sr = (Toolbar) findViewById(R.id.toolbar_sr);
         drawerLayout_sr = (DrawerLayout) findViewById(R.id.drawerLayout_sr);
