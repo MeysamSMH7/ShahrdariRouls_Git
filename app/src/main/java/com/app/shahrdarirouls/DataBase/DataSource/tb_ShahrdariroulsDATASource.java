@@ -100,8 +100,8 @@ public class tb_ShahrdariroulsDATASource {
         return data;
     }
 
-    public void DeleteAll(){
-        database.delete(tb_ShardariRoulsStructure.tableName , null , null);
+    public void DeleteAll() {
+        database.delete(tb_ShardariRoulsStructure.tableName, null, null);
     }
 
 
@@ -352,11 +352,12 @@ public class tb_ShahrdariroulsDATASource {
 
     }
 
+
     public List<tb_ShahrdariRouls> GetRecordBySubPosts(String txt) {
 
         List<tb_ShahrdariRouls> lstData = new ArrayList<tb_ShahrdariRouls>();
 
-        Cursor cursor = database.query(false, tb_ShardariRoulsStructure.tableName, allColumns, tb_ShardariRoulsStructure.colsHoraMashmol + " IN " + "('" + txt + "')",null, null, null, null, null);
+        Cursor cursor = database.query(false, tb_ShardariRoulsStructure.tableName, allColumns, tb_ShardariRoulsStructure.colsHoraMashmol + " IN " + "('" + txt + "')", null, null, null, null, null);
 
         cursor.moveToFirst();
 
@@ -382,7 +383,7 @@ public class tb_ShahrdariroulsDATASource {
 
         List<tb_ShahrdariRouls> lstData = new ArrayList<tb_ShahrdariRouls>();
 
-        Cursor cursor = database.query(false, tb_ShardariRoulsStructure.tableName, allColumns, tb_ShardariRoulsStructure.colPK_ShahrdariRouls + " = " + id ,null, null, null, null, null);
+        Cursor cursor = database.query(false, tb_ShardariRoulsStructure.tableName, allColumns, tb_ShardariRoulsStructure.colPK_ShahrdariRouls + " = " + id, null, null, null, null, null);
 
         cursor.moveToFirst();
 
@@ -404,7 +405,6 @@ public class tb_ShahrdariroulsDATASource {
     }
 
 
-
     public List<tb_ShahrdariRouls> GetList() {
         List<tb_ShahrdariRouls> lstData = new ArrayList<tb_ShahrdariRouls>();
 
@@ -412,6 +412,25 @@ public class tb_ShahrdariroulsDATASource {
                 allColumns,
                 null, null, null, null,
                 tb_ShardariRoulsStructure.colPK_ShahrdariRouls + " DESC");
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()) {
+            tb_ShahrdariRouls tmpInfo = ConvertToRecord(cursor);
+            lstData.add(tmpInfo);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return lstData;
+    }
+
+
+    public List<tb_ShahrdariRouls> GetListShora() {
+        List<tb_ShahrdariRouls> lstData = new ArrayList<tb_ShahrdariRouls>();
+
+        Cursor cursor = database.query(true , tb_ShardariRoulsStructure.tableName, allColumns
+                , null, null, tb_ShardariRoulsStructure.colsHoraMashmol, null, tb_ShardariRoulsStructure.colsHoraMashmol, null);
+
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {

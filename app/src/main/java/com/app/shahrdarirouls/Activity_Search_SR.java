@@ -2,12 +2,17 @@ package com.app.shahrdarirouls;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -37,9 +42,12 @@ public class Activity_Search_SR extends AppCompatActivity {
     List<Data> dataSERACH;
     List<tb_ShahrdariRouls> data;
     List<tb_ShahrdariRouls> datatxt;
+    List<tb_ShahrdariRouls> itemShora;
 
     String[] ListViewItemsShora = new String[]{"تهران و ری و تجریش", "شوراهای اسلامی شهرستان، استان و شورای عالی استانها", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا", "شورای روستا و بخش", "شورای روستای عشایری", "شورای شهر", "شورای شهر و روستا", "شورای شهر وروستا", "شورای شهرستان", "شورای شهرستان،استان و عالی استانها", "شورای عالی استان", "شورای عالی استانها", "شوراي عالي استانها", "کلیه شوراها", "مالی", "مالی سایر شهرداری ها", "مالی کلانشهر و مراکز استان"};
     String[] ListViewItemsSharh = new String[]{"اجاره و فروش", "اداره جلسات و اخطار مغایرت قانونی", "ادغام و انحلال و تبدیل به شهر", "ارسال مصوبات", "ارگانهای دولتی", "استفاده از درآمد", "استقراض ", "اطلاع رسانی", "افزایش و کاهش", "الزامات", "امانی", "اموال", "انتخاب شهردار", "اولین جلسه", "انتخاب", "انواع", "بودجه", "پاداش", "پاسخ گویی و استیضاح", "پلاک کوبی و ثبت", "پیشنهادات ", "تامین اعتبار بودجه شورای شهر", "تامین اعتبارات اجرای قانون نوسازی از محل درآمد 10 درصد قانون نوسازی", "تبعیت مقامات", "تجدید مناقصه", "تحقیق و تفحص", "تحلیف و سوگند", "تحویل", "تخلف و محکومیت و محرومیت و حل اختلاف", "تصرف در سپرده", "تطبیق", "تقسیط", "توازن بودجه", "تهران", "جانشین و تفویض اختیار و مسئولیت", "حد نصاب", "حساب مخصوص وصول عوارض", "حراج", "حسن انجام کار", "حسابرسی", "درآمد", "حفظ و حراست", "رسمیت و اعتبار", "دفاتر حسابداری", "سهم فرهنگ و خیریه و درمان", "شرکتهای دولتی", "شیوه عمل معاملات متوسط", "صندوق", "عوارض", "عدم حضور برندگان", "کالای انحصاری", "قرارداد", "مراحل حسابرسی", "کمیسیون", "مصرف اعتبارات در همان حوزه", "مزایده", "مفاصا حساب عوارض ملک", "معاملات", "مکان و زمان", "مناقصه محدود", "مناقصه", "موسسات وابسته", "مناقصه محدود و تجدید و ترک مناقصه", "مهلت و دوره زمانی", "میزان افزایش و کاهش", " نسبت تخصیص بودجه عمرانی", "نحوه انجام و شیوه عمل", "وصول و نگهداری", "نصاب", "هزینه", "هدف تشکیل و وظایف و اختیارات"};
+
+
 
     String STedtTxtSearchinTxt = "";
     String STchBoxShora_01 = null, STchBoxShora_02 = null, STchBoxShora_03 = null, STchBoxShora_04 = null, STchBoxShora_05 = null, STchBoxShora_06 = null, STchBoxShora_07 = null, STchBoxShora_08 = null, STchBoxShora_09 = null, STchBoxShora_10 = null, STchBoxShora_11 = null, STchBoxShora_12 = null, STchBoxShora_13 = null, STchBoxShora_14 = null, STchBoxShora_15 = null, STchBoxShora_16 = null, STchBoxShora_17 = null, STchBoxShora_18 = null, STchBoxShora_19 = null, STchBoxShora_20 = null, STchBoxShora_21 = null;
@@ -58,6 +66,10 @@ public class Activity_Search_SR extends AppCompatActivity {
         setContentView(R.layout.activity_search_sr);
 
 
+
+
+
+
         linerFirstSearch = (LinearLayout) findViewById(R.id.linerFirstSearch);
         linerSecondSearch = (LinearLayout) findViewById(R.id.linerSecondSearch);
         listSharhOne = (ListView) findViewById(R.id.listSharhOne);
@@ -67,31 +79,65 @@ public class Activity_Search_SR extends AppCompatActivity {
         edtTxtSearchinTxt = (EditText) findViewById(R.id.edtTxtSearchinTxt);
         btnSearch = (TextView) findViewById(R.id.btnSearch);
 
+        tb_ShahrdariroulsDATASource tb_shahrdariroulsDATASourc = new tb_ShahrdariroulsDATASource(Activity_Search_SR.this);
+        tb_shahrdariroulsDATASourc.Open();
+        itemShora = tb_shahrdariroulsDATASourc.GetListShora();
+        tb_shahrdariroulsDATASourc.Close();
+
+
+
+
         lstViewShoraMashmol.setDivider(null);
         listSharhOne.setDivider(null);
 
-        ArrayAdapter<String> adapter_SHora = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, ListViewItemsShora);
+        ArrayAdapter<tb_ShahrdariRouls> adapter_SHora = new ArrayAdapter<tb_ShahrdariRouls>(this, R.layout.row_listsearch, itemShora) {
+            @NonNull
+            @Override
+            public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                convertView = getLayoutInflater().inflate(R.layout.row_listsearch, parent, false);
+                final CheckBox chboxList = (CheckBox) convertView.findViewById(R.id.chboxList);
+                chboxList.setText(itemShora.get(position).ShoraiMashmol);
+                chboxList.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                        if (chboxList.isChecked()){
+                            Switch_Shora_Full(position);
+                            Toast.makeText(getBaseContext(), itemShora.get(position).ShoraiMashmol + " چک شد", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Switch_Shora_Null(position);
+                            Toast.makeText(getBaseContext(), itemShora.get(position).ShoraiMashmol + " چک برداشته شد", Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    }
+                });
+                return convertView;
+            }
+        };
+
         ArrayAdapter<String> adapter_Sharh = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, ListViewItemsSharh);
         lstViewShoraMashmol.setAdapter(adapter_SHora);
         listSharhOne.setAdapter(adapter_Sharh);
 
 
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
-                ListView lv = (ListView) arg0;
-                if (lv.isItemChecked(position)) {
-
-                    Switch_Shora_Full(position);
-                    Toast.makeText(getBaseContext(), ListViewItemsShora[position] + " چک شد", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    Switch_Shora_Null(position);
-                    Toast.makeText(getBaseContext(), ListViewItemsShora[position] + " چک برداشته شد", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        };
+//        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
+//                ListView lv = (ListView) arg0;
+//                if (lv.isItemChecked(position)) {
+//
+//                    Switch_Shora_Full(position);
+//                    Toast.makeText(getBaseContext(), ListViewItemsShora[position] + " چک شد", Toast.LENGTH_SHORT).show();
+//                } else {
+//
+//                    Switch_Shora_Null(position);
+//                    Toast.makeText(getBaseContext(), ListViewItemsShora[position] + " چک برداشته شد", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//        };
 
         AdapterView.OnItemClickListener itemClickListener1 = new AdapterView.OnItemClickListener() {
             @Override
@@ -109,7 +155,7 @@ public class Activity_Search_SR extends AppCompatActivity {
 
             }
         };
-        lstViewShoraMashmol.setOnItemClickListener(itemClickListener);
+//        lstViewShoraMashmol.setOnItemClickListener(itemClickListener);
         listSharhOne.setOnItemClickListener(itemClickListener1);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {

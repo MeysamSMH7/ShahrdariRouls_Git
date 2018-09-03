@@ -25,12 +25,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.app.shahrdarirouls.DataBase.DatabaseManagement;
 import com.app.shahrdarirouls.DataBase.MyDateBase;
-
 import java.io.File;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Activity_Posts extends AppCompatActivity {
@@ -51,9 +48,7 @@ public class Activity_Posts extends AppCompatActivity {
             R.drawable.menu, R.drawable.logout, R.drawable.share, R.drawable.share,
             R.drawable.add, R.drawable.about_us, R.drawable.bookmark, R.drawable.building,
             R.drawable.building_icon, R.drawable.cityscape, R.drawable.contact, R.drawable.ebook,
-            R.drawable.menu, R.drawable.logout,
-
-            R.drawable.search,R.drawable.search
+            R.drawable.menu, R.drawable.logout, R.drawable.search,R.drawable.search
     };
 
     String[] pdfNames = {"پی دی اف یک", "پی دی اف دو", "پی دی اف سه", "پی دی اف چهار", "پی دی اف پنج", "پی دی اف شش"};
