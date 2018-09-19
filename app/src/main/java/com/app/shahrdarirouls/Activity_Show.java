@@ -106,9 +106,7 @@ public class Activity_Show extends AppCompatActivity {
                         RoulName.getText().toString() + "\n" +
                                 Made.getText().toString() + "\n" +
                                 Tabsare.getText().toString() + "\n" +
-                                SharhZero.getText().toString() + "\n" +
                                 SharhOne.getText().toString() + "\n" +
-                                SharhTwo.getText().toString() + "\n" +
                                 ShoraMashmol.getText().toString() + "\n" +
                                 txt.getText().toString()
                 );

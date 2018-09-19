@@ -23,19 +23,16 @@ import com.app.shahrdarirouls.DataBase.DataSource.tb_ShahrdariroulsDATASource;
 import com.app.shahrdarirouls.DataBase.Table.tb_Favorite;
 import com.app.shahrdarirouls.DataBase.Table.tb_ShahrdariRouls;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Activity_Favorite extends AppCompatActivity {
 
     List<tb_Favorite> data;
     ListView lstFavorite;
-    //List<tb_ShahrdariRouls> dataShar;
-    //tb_ShahrdariroulsDATASource tb_shahrdariroulsDATASource;
+    List<tb_ShahrdariRouls> dataShar;
 
 
-    //    UserList listViewPersonAdapter;
-    String[] asd = {"sadf", "asdfa", "asdfa", "asdfa", "asdfa", "asdfa", "asdfa"};
-    ArrayAdapter arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,40 +44,43 @@ public class Activity_Favorite extends AppCompatActivity {
         data = tb_favoriteDATASource.GetList();
         tb_favoriteDATASource.Close();
 
+        tb_ShahrdariroulsDATASource tb_shahrdariroulsDATASource = new tb_ShahrdariroulsDATASource(Activity_Favorite.this);
+        tb_shahrdariroulsDATASource.Open();
 
-//        tb_shahrdariroulsDATASource = new tb_ShahrdariroulsDATASource(Activity_Favorite.this);
-//
-//
-//        tb_shahrdariroulsDATASource.Open();
-//
-//
-//        for (tb_Favorite dat : data) {
-//            dataShar = tb_shahrdariroulsDATASource.GetRecordBySubPostsForFavorite(dat.IdPost);
-//        }
-//
-//
-//        tb_shahrdariroulsDATASource.Close();
+
+        dataShar = new ArrayList<tb_ShahrdariRouls>();
+
+        for (tb_Favorite dat : data){
+            dataShar.add(tb_shahrdariroulsDATASource.GetRecordByIdPost(dat.IdPost));
+        }
+
+        tb_shahrdariroulsDATASource.Close();
+
+
 
 
         lstFavorite = (ListView) findViewById(R.id.lstFavorite);
+        lstFavorite.setDivider(null);
 
 
-        final ArrayAdapter adapterFavorite = new ArrayAdapter(Activity_Favorite.this, R.layout.activity_favorite, data) {
+        final ArrayAdapter adapterFavorite = new ArrayAdapter(Activity_Favorite.this, R.layout.activity_favorite, dataShar) {
             @NonNull
             @Override
             public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 convertView = getLayoutInflater().inflate(R.layout.row_lst_favorite, parent, false);
-                TextView txtLstFav = (TextView) convertView.findViewById(R.id.txtLstFav);
+//                TextView txtLstFav = (TextView) convertView.findViewById(R.id.txtLstFav);
                 TextView description = (TextView) convertView.findViewById(R.id.description);
+                TextView title = (TextView) convertView.findViewById(R.id.title);
                 Button btnLstFav = (Button) convertView.findViewById(R.id.btnLstFav);
 
 
-                txtLstFav.setText(data.get(position).IdPost + "\n");
-                txtLstFav.setOnClickListener(new View.OnClickListener() {
+
+                title.setText(dataShar.get(position).RoulsNAme + "\n");
+                title.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Activity_Favorite.this, Activity_Show.class);
-                        intent.putExtra("KEY", data.get(position).IdPost + "");
+                        intent.putExtra("KEY", dataShar.get(position).PK_Shahrdari + "");
                         startActivity(intent);
                     }
                 });
@@ -90,9 +90,9 @@ public class Activity_Favorite extends AppCompatActivity {
                     public void onClick(View view) {
                         tb_FavoriteDATASource tb_favoriteDATASource1 = new tb_FavoriteDATASource(Activity_Favorite.this);
                         tb_favoriteDATASource1.Open();
-                        tb_favoriteDATASource1.Delete(data.get(position).IdPost);
+                        tb_favoriteDATASource1.Delete(dataShar.get(position).PK_Shahrdari);
                         tb_favoriteDATASource1.Close();
-                        data.remove(position);
+                        dataShar.remove(position);
                         notifyDataSetChanged();
                     }
                 });
@@ -101,103 +101,6 @@ public class Activity_Favorite extends AppCompatActivity {
             }
         };
         lstFavorite.setAdapter(adapterFavorite);
-
     }
+
 }
-
-//    UserList.IListSelectItemCallback iListSelectItemCallback = new UserList.IListSelectItemCallback() {
-//        @Override
-//        public void SelectedItemCallback(tb_ShahrdariRouls info) {
-//            Intent intent = new Intent(Activity_Favorite.this, Activity_Show.class);
-//            intent.putExtra("KEY", info.PK_Shahrdari + "");
-//            startActivity(intent);
-//        }
-//
-//        @Override
-//        public void DirectCall_CallBack(int id) {
-//            tb_FavoriteDATASource tb_favoriteDATASource1 = new tb_FavoriteDATASource(Activity_Favorite.this);
-//            tb_favoriteDATASource1.Open();
-//            tb_favoriteDATASource1.Delete(id);
-//            tb_favoriteDATASource1.Close();
-//        }
-//    };
-
-
-//class UserList extends BaseAdapter {
-//    private Context context;
-//    private List<tb_ShahrdariRouls> lstfavorite;
-//    private IListSelectItemCallback _IListSelectItemCallback;
-//    private int _templateResourceId;
-//    private LayoutInflater inflater = null;
-//
-//
-//    TextView txtLstFav;
-//    Button btnLstFav;
-//
-//
-//    public interface IListSelectItemCallback {
-//        public void SelectedItemCallback(tb_ShahrdariRouls info);
-//
-//        public void DirectCall_CallBack(int id);
-//    }
-//
-//    public UserList(Activity activity, List<tb_ShahrdariRouls> favorites, IListSelectItemCallback iListSelectItemCallback, int templateResourceId) {
-//        context = activity;
-//        lstfavorite = favorites;
-//        _IListSelectItemCallback = iListSelectItemCallback;
-//        _templateResourceId = templateResourceId;
-//
-//
-//        inflater = LayoutInflater.from(context);
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        return lstfavorite.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//        return position;
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//        return position;
-//    }
-//
-//
-//    @Override
-//    public View getView(final int position, View convertView, ViewGroup parent) {
-//        View rowView;
-//        rowView = inflater.inflate(_templateResourceId, null);
-//
-//        txtLstFav = (TextView) rowView.findViewById(R.id.txtLstFav);
-//        btnLstFav = (Button) rowView.findViewById(R.id.btnLstFav);
-//
-//
-//        txtLstFav.setText(String.format("%s",
-//                lstfavorite.get(position).RoulsNAme));
-//
-//
-//        btnLstFav.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (_IListSelectItemCallback != null) {
-//                    _IListSelectItemCallback.DirectCall_CallBack(lstfavorite.get(position).PK_Shahrdari);
-//                }
-//            }
-//        });
-//
-//        rowView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (_IListSelectItemCallback != null) {
-//                    _IListSelectItemCallback.SelectedItemCallback(lstfavorite.get(position));
-//                }
-//            }
-//        });
-//
-//        return rowView;
-//    }
-//}

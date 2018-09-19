@@ -100,6 +100,21 @@ public class tb_ShahrdariroulsDATASource {
         return data;
     }
 
+    public tb_ShahrdariRouls GetRecordByIdPost(int id) {
+        Cursor cursor = database.query(false, tb_ShardariRoulsStructure.tableName, allColumns, tb_ShardariRoulsStructure.colPK_ShahrdariRouls + " = " + id, null, null, null, null, null);
+
+
+        cursor.moveToFirst();
+
+        if (cursor.getCount() == 0) {
+            return null;
+        }
+
+        tb_ShahrdariRouls data = ConvertToRecord(cursor);
+        cursor.close();
+        return data;
+    }
+
     public void DeleteAll() {
         database.delete(tb_ShardariRoulsStructure.tableName, null, null);
     }
@@ -379,30 +394,6 @@ public class tb_ShahrdariroulsDATASource {
     }
 
 
-    public List<tb_ShahrdariRouls> GetRecordBySubPostsForFavorite(int id) {
-
-        List<tb_ShahrdariRouls> lstData = new ArrayList<tb_ShahrdariRouls>();
-
-        Cursor cursor = database.query(false, tb_ShardariRoulsStructure.tableName, allColumns, tb_ShardariRoulsStructure.colPK_ShahrdariRouls + " = " + id, null, null, null, null, null);
-
-        cursor.moveToFirst();
-
-
-        while (!cursor.isAfterLast()) {
-            tb_ShahrdariRouls tmpInfo = ConvertToRecord(cursor);
-            lstData.add(tmpInfo);
-            cursor.moveToNext();
-        }
-
-        if (cursor.getCount() == 0) {
-            return null;
-        }
-
-
-        cursor.close();
-        return lstData;
-
-    }
 
 
     public List<tb_ShahrdariRouls> GetList() {
