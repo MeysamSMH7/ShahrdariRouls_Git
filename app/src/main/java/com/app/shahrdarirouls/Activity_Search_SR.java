@@ -774,10 +774,10 @@ public class Activity_Search_SR extends AppCompatActivity {
 
             if (data != null) {
                 if (!(STedtTxtSearchinTxt.equals(""))) {
+                    datatxt = new ArrayList<>();
                     try {
                         for (tb_ShahrdariRouls dat : data) {
                             if (dat.txtRouls.contains(STedtTxtSearchinTxt)) {
-                                datatxt = new ArrayList<>();
                                 datatxt.add(dat);
                             } else if (!(dat.txtRouls.contains(STedtTxtSearchinTxt))) {
                                 recyclerviewSE.setAdapter(null);
