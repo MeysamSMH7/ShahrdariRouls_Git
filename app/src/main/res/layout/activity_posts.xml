@@ -11,10 +11,9 @@
     <include layout="@layout/toolbar_sr" />
 
 
-    <GridView
+    <ListView
         android:id="@+id/lstGVMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="3" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

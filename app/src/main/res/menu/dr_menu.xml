@@ -9,10 +9,10 @@
         android:icon="@drawable/search"
         android:title="جستجو" />
 
-    <item
-        android:id="@+id/PDFs"
-        android:icon="@drawable/ebook"
-        android:title="کتاب های الکترونیک" />
+    <!--<item-->
+        <!--android:id="@+id/PDFs"-->
+        <!--android:icon="@drawable/ebook"-->
+        <!--android:title="کتاب های الکترونیک" />-->
     <item
         android:id="@+id/AddXLS"
         android:icon="@drawable/add"

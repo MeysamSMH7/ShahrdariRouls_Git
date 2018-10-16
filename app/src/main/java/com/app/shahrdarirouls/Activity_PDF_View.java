@@ -17,45 +17,65 @@ public class Activity_PDF_View extends AppCompatActivity {
         PDFView pdfview = (PDFView) findViewById(R.id.pdfview);
 
         String keyPDF = getIntent().getStringExtra("KeyPDF");
+//        String keyPDF2 = getIntent().getStringExtra("KeyPDF2");
+//        String keyPDF3 = getIntent().getStringExtra("KeyPDF3");
 
-        switch (keyPDF) {
-            case "کتاب1":
-                pdfview.fromAsset("pdfName.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب2":
-                pdfview.fromAsset("pdfName1.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب3":
-                pdfview.fromAsset("pdfName2.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب4":
-                pdfview.fromAsset("pdfName3.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب5":
-                pdfview.fromAsset("pdfName4.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب6":
-                pdfview.fromAsset("pdfName5.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب7":
-                pdfview.fromAsset("pdfName5.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب8":
-                pdfview.fromAsset("pdfName5.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب9":
-                pdfview.fromAsset("pdfName5.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب10":
-                pdfview.fromAsset("pdfName5.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
-            case "کتاب11":
-                pdfview.fromAsset("pdfName5.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
-                break;
+//        if (keyPDF1 == "KeyPDF1"){
+            switch (keyPDF) {
+                case "1-1":
+                    pdfview.fromAsset("1-1.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-2":
+                    pdfview.fromAsset("1-2.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-3":
+                    pdfview.fromAsset("1-3.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-4":
+                    pdfview.fromAsset("1-4.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-5":
+                    pdfview.fromAsset("1-5.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-6":
+                    pdfview.fromAsset("1-6.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-7":
+                    pdfview.fromAsset("1-7.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-8":
+                    pdfview.fromAsset("1-8.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "1-9":
+                    pdfview.fromAsset("1-9.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
 
+                case "2-1":
+                    pdfview.fromAsset("2-1.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "2-2":
+                    pdfview.fromAsset("2-2.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "2-3":
+                    pdfview.fromAsset("2-3.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "2-4":
+                    pdfview.fromAsset("2-4.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
 
-        }
-
+                case "3-1":
+                    pdfview.fromAsset("3-1.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "3-2":
+                    pdfview.fromAsset("3-2.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "3-3":
+                    pdfview.fromAsset("3-3.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+                case "3-4":
+                    pdfview.fromAsset("3-4.pdf").defaultPage(0).showMinimap(true).enableSwipe(true).load();
+                    break;
+            }
 
     }
 }

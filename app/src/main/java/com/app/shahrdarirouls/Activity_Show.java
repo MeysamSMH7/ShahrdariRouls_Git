@@ -180,47 +180,47 @@ public class Activity_Show extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void AlertDialogPDF() {
-
-        AlertDialog.Builder builder_pdfSelector = new AlertDialog.Builder(Activity_Show.this);
-        LinearLayout linearLayout_pdfSelector = (LinearLayout) getLayoutInflater().inflate(R.layout.pdf_selector, null, false);
-        final ListView listPDFSelector = linearLayout_pdfSelector.findViewById(R.id.listPDFSelector);
-        ArrayAdapter arrayAdapterPDF = new ArrayAdapter(Activity_Show.this, android.R.layout.simple_list_item_1, pdfNames);
-        listPDFSelector.setAdapter(arrayAdapterPDF);
-        listPDFSelector.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intentPDF = new Intent(Activity_Show.this, Activity_PDF_View.class);
-                switch (pdfNames[i]) {
-                    case "پی دی اف یک":
-                        intentPDF.putExtra("KEY", "first");
-                        break;
-                    case "پی دی اف دو":
-                        intentPDF.putExtra("KEY", "second");
-                        break;
-                    case "پی دی اف سه":
-                        intentPDF.putExtra("KEY", "third");
-                        break;
-                    case "پی دی اف چهار":
-                        intentPDF.putExtra("KEY", "fourth");
-                        break;
-                    case "پی دی اف پنج":
-                        intentPDF.putExtra("KEY", "fifth");
-                        break;
-                    case "پی دی اف شش":
-                        intentPDF.putExtra("KEY", "sixth");
-                        break;
-                }
-                startActivity(intentPDF);
-                pdf_selector.dismiss();
-            }
-        });
-
-        builder_pdfSelector.setView(linearLayout_pdfSelector);
-        pdf_selector = builder_pdfSelector.create();
-        pdf_selector.show();
-
-    }
+//    private void AlertDialogPDF() {
+//
+//        AlertDialog.Builder builder_pdfSelector = new AlertDialog.Builder(Activity_Show.this);
+//        LinearLayout linearLayout_pdfSelector = (LinearLayout) getLayoutInflater().inflate(R.layout.pdf_selector, null, false);
+//        final ListView listPDFSelector = linearLayout_pdfSelector.findViewById(R.id.listPDFSelector);
+//        ArrayAdapter arrayAdapterPDF = new ArrayAdapter(Activity_Show.this, android.R.layout.simple_list_item_1, pdfNames);
+//        listPDFSelector.setAdapter(arrayAdapterPDF);
+//        listPDFSelector.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intentPDF = new Intent(Activity_Show.this, Activity_PDF_View.class);
+//                switch (pdfNames[i]) {
+//                    case "پی دی اف یک":
+//                        intentPDF.putExtra("KEY", "first");
+//                        break;
+//                    case "پی دی اف دو":
+//                        intentPDF.putExtra("KEY", "second");
+//                        break;
+//                    case "پی دی اف سه":
+//                        intentPDF.putExtra("KEY", "third");
+//                        break;
+//                    case "پی دی اف چهار":
+//                        intentPDF.putExtra("KEY", "fourth");
+//                        break;
+//                    case "پی دی اف پنج":
+//                        intentPDF.putExtra("KEY", "fifth");
+//                        break;
+//                    case "پی دی اف شش":
+//                        intentPDF.putExtra("KEY", "sixth");
+//                        break;
+//                }
+//                startActivity(intentPDF);
+//                pdf_selector.dismiss();
+//            }
+//        });
+//
+//        builder_pdfSelector.setView(linearLayout_pdfSelector);
+//        pdf_selector = builder_pdfSelector.create();
+//        pdf_selector.show();
+//
+//    }
 
     private void AlertDialogConnectUS() {
         AlertDialog.Builder builder_َACUS2 = new AlertDialog.Builder(Activity_Show.this);
@@ -293,10 +293,10 @@ public class Activity_Show extends AppCompatActivity {
                 Intent intentSerach = new Intent(Activity_Show.this, Activity_Search_SR.class);
                 startActivity(intentSerach);
                 break;
-            case R.id.PDFs:
-                AlertDialogPDF();
+//            case R.id.PDFs:
+//                AlertDialogPDF();
 
-                break;
+//                break;
             case R.id.AddXLS:
                 ImportExelData();
 
