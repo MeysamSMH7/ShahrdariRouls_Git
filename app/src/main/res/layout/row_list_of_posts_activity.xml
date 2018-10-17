@@ -18,8 +18,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/dr_corners"
             android:layout_weight="1"
+            android:background="@drawable/dr_corners"
             android:padding="16dp">
 
 
@@ -28,10 +28,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_weight="0.8"
                 android:text="عنوان"
-                android:textStyle="bold"
-                android:layout_weight="0.8"/>
-
+                android:textStyle="bold" />
 
 
         </RelativeLayout>

@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -19,23 +18,18 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.shahrdarirouls.DataBase.DataSource.tb_FavoriteDATASource;
 import com.app.shahrdarirouls.DataBase.DatabaseManagement;
 import com.app.shahrdarirouls.DataBase.MyDateBase;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -45,22 +39,13 @@ public class Activity_Posts extends AppCompatActivity {
     //    private MyDateBase db;
     private DatabaseManagement db;
 
-    //    String[] lstNameMain = {"تهران و ری و تجریش", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا", "شورای روستا و بخش", "شورای روستای عشایری", "شورای شهر", "شورای شهر و روستا", "شورای شهر وروستا", "شورای شهرستان", "شورای شهرستان،استان و عالی استانها", "شورای عالی استان", "شورای عالی استانها", "شوراي عالي استانها", "کلیه شوراها", "مالی", "مالی سایر شهرداری ها", "مالی کلانشهر و مراکز استان"};
-    ArrayList<String> lstNameMain = new ArrayList<String>();
+    //    String[] lstNameMain = {"تهران و ری و تجریش", "شورای استان", "شورای اسلامی استان", "شورای بخش", "شورای تهران", "شورای روستا",};
+    String[] lstNameMain = {"قوانین شوراها", "قوانین مالی", "قوانین املاک و شهرداری", "کتاب ها و جزوات آموزشی", "خالی", "جستجو"};
+//    ArrayList<String> lstNameMain = new ArrayList<String>();
 
-
-    int[] lstPicMain = {
-            R.drawable.add, R.drawable.about_us, R.drawable.bookmark, R.drawable.building,
-            R.drawable.building_icon, R.drawable.cityscape, R.drawable.contact, R.drawable.ebook,
-            R.drawable.menu, R.drawable.logout, R.drawable.share, R.drawable.share,
-            R.drawable.add, R.drawable.about_us, R.drawable.bookmark, R.drawable.building,
-            R.drawable.building_icon, R.drawable.cityscape, R.drawable.contact, R.drawable.ebook,
-            R.drawable.menu, R.drawable.logout, R.drawable.search, R.drawable.search
-    };
-
-    String[] pdfNames1 = {"پی دی اف یک", "پی دی اف دو", "پی دی اف سه", "پی دی اف چهار", "پی دی اف پنج", "پی دی اف شش" , "پی دی اف هفت" , "پی دی اف هشت" , "پی دی اف نه"};
-    String[] pdfNames2 = {"پی دی اف یک", "پی دی اف دو", "پی دی اف سه", "پی دی اف چهار"};
-    String[] pdfNames3 = {"پی دی اف یک", "پی دی اف دو", "پی دی اف سه", "پی دی اف چهار"};
+    String[] pdfNames1 = {"تعاریف محدوده و حریم شهر و نحوه تعیین آنها", "تعریف و ضوابط تقسیمات کشوری", "قانون شهرداری مصوب 1344 با اصلاحات و الحاقات بعدی آن", "قانون نوسازی و عمران شهری و آئین نامه ای مربوط"};
+    String[] pdfNames2 = {"آئین نامه اجرایی احراز تصدی شهردار", "آئین نامه حق جلسه شوراهای اسلامی", "آئین نامه ها و دستورالعملهای قانون تشکیلات ووظایف شوراها", "آئین نامه های اجرایی شوراهای اسلامی", "آئین نامه های داخلی شوراهای شهر و شهرستان و استان و عالی لستانها", "سفر شوراهای محلی به خارج از کشور", "قانون تشكيلات، وظايف و انتخابات شوراهاي اسلامي كشور و انتخاب شهرداران مصوب 1375", "قانون تشکیلات شوراهای اسلامی کشوری و انتخابات شوراهای مزبور مصوب 29 تیر 1365 با اصلاحیه های بعدی"};
+    String[] pdfNames3 = {"آئین نامه مالی شهرداری ها به استثنا تهران و مرکز استان", "آئین نامه مالی کلانشهرها و مراکز استان", "آئین نامه مالی", "حقوق و مزایای شهرداران", "دستورالعملهای مالی"};
 
     AlertDialog pdf_selector, about_connect_us;
     DrawerLayout drawerLayout_sr;
@@ -92,74 +77,91 @@ public class Activity_Posts extends AppCompatActivity {
 
         setSupportActionBar(toolbar_sr);
 
-        final ListView lstGVMain = (ListView) findViewById(R.id.lstGVMain);
+        final GridView lstGVMain = (GridView) findViewById(R.id.lstGVMain);
 //        CustomGridView customGridView = new CustomGridView(Activity_Posts.this, lstNameMain, lstPicMain);
-//        lstGVMain.setAdapter(customGridView);
+        CustomGridView customGridView = new CustomGridView(Activity_Posts.this, lstNameMain);
+        lstGVMain.setAdapter(customGridView);
 
-        lstGVMain.setDivider(null);
-
-
-        lstNameMain.add("قوانین مرتبط با شوراها");
-        lstNameMain.add("قوانین مرتبط با مالی");
-        lstNameMain.add("قوانین مرتبط با شهرداری و املاک");
-        lstNameMain.add("جستجوی موضوعی قوانین");
+//        lstGVMain.setDivider(null);
 
 
-        final ArrayAdapter adapterFavorite = new ArrayAdapter(Activity_Posts.this, R.layout.activity_posts, lstNameMain) {
-            @NonNull
-            @Override
-            public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                convertView = getLayoutInflater().inflate(R.layout.row_list_of_posts_activity, parent, false);
-
-                TextView title = (TextView) convertView.findViewById(R.id.title);
+//        lstNameMain.add("قوانین مرتبط با شوراها");
+//        lstNameMain.add("قوانین مرتبط با مالی");
+//        lstNameMain.add("قوانین مرتبط با شهرداری و املاک");
+//        lstNameMain.add("جستجوی موضوعی قوانین");
 
 
-                title.setText(lstNameMain.get(position) + "\n");
-                title.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (lstNameMain.get(position) == "جستجوی موضوعی قوانین") {
-                            Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
-                            startActivity(intentSerach);
-                        } else {
-//                            Intent intent = new Intent(Activity_Posts.this, Activity_PDF_View.class);
-//                            intent.putExtra("KEY", lstNameMain.get(position) + "");
-//                            startActivity(intent);
-                            if (lstNameMain.get(position) == "قوانین مرتبط با شوراها"){
-                                AlertDialogPDF1();
-                            }else if (lstNameMain.get(position) == "قوانین مرتبط با مالی"){
-                                AlertDialogPDF2();
-                            }else if (lstNameMain.get(position) == "قوانین مرتبط با شهرداری و املاک"){
-                                AlertDialogPDF3();
-                            }
-                        }
-                    }
-                });
-
-
-                return convertView;
-            }
-        };
-        lstGVMain.setAdapter(adapterFavorite);
-
-
-//        lstGVMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//        final ArrayAdapter adapterFavorite = new ArrayAdapter(Activity_Posts.this, R.layout.activity_posts, lstNameMain) {
+//            @NonNull
 //            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-////                Intent intent = new Intent(Activity_Posts.this, Activity_SubPosts.class);
+//            public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+//                convertView = getLayoutInflater().inflate(R.layout.row_list_of_posts_activity, parent, false);
 //
-//                if (i == 22) {
-//                    Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
-//                    startActivity(intentSerach);
-//                } else {
-//                    Intent intent = new Intent(Activity_Posts.this, Activity_PDF_View.class);
-//                    intent.putExtra("KeyPDF", lstNameMain[i] + "");
-//                    startActivity(intent);
-//                }
+//                TextView title = (TextView) convertView.findViewById(R.id.title);
 //
 //
+//                title.setText(lstNameMain.get(position) + "\n");
+//                title.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        if (lstNameMain.get(position) == "جستجوی موضوعی قوانین") {
+//                            Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
+//                            startActivity(intentSerach);
+//                        } else {
+////                            Intent intent = new Intent(Activity_Posts.this, Activity_PDF_View.class);
+////                            intent.putExtra("KEY", lstNameMain.get(position) + "");
+////                            startActivity(intent);
+//                            if (lstNameMain.get(position) == "قوانین مرتبط با شوراها"){
+//                                AlertDialogPDF1();
+//                            }else if (lstNameMain.get(position) == "قوانین مرتبط با مالی"){
+//                                AlertDialogPDF2();
+//                            }else if (lstNameMain.get(position) == "قوانین مرتبط با شهرداری و املاک"){
+//                                AlertDialogPDF3();
+//                            }
+//                        }
+//                    }
+//                });
+//
+//
+//                return convertView;
 //            }
-//        });
+//        };
+//        lstGVMain.setAdapter(adapterFavorite);
+
+        lstGVMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent = new Intent(Activity_Posts.this, Activity_SubPosts.class);
+
+                switch (i) {
+                    case 0:
+                        AlertDialogPDF2();
+                        break;
+
+                    case 1:
+                        AlertDialogPDF3();
+                        break;
+
+                    case 2:
+                        AlertDialogPDF1();
+                        break;
+
+                    case 3:
+                        Toast.makeText(Activity_Posts.this, "درحال حاضر کتابی برای این مجموعه ارائه نشده است", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case 4:
+                        Toast.makeText(Activity_Posts.this, "درحال حاضر کتابی برای این مجموعه ارائه نشده است", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case 5:
+                        Intent intentSerach = new Intent(Activity_Posts.this, Activity_Search_SR.class);
+                        startActivity(intentSerach);
+                        break;
+
+                }
+            }
+        });
 
 
         navigationview_sr.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -211,35 +213,17 @@ public class Activity_Posts extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intentPDF = new Intent(Activity_Posts.this, Activity_PDF_View.class);
                 switch (pdfNames1[i]) {
-                    case "پی دی اف یک":
+                    case "تعاریف محدوده و حریم شهر و نحوه تعیین آنها":
                         intentPDF.putExtra("KeyPDF", "1-1");
                         break;
-                    case "پی دی اف دو":
+                    case "تعریف و ضوابط تقسیمات کشوری":
                         intentPDF.putExtra("KeyPDF", "1-2");
                         break;
-                    case "پی دی اف سه":
+                    case "قانون شهرداری مصوب 1344 با اصلاحات و الحاقات بعدی آن":
                         intentPDF.putExtra("KeyPDF", "1-3");
                         break;
-                    case "پی دی اف چهار":
+                    case "قانون نوسازی و عمران شهری و آئین نامه ای مربوط":
                         intentPDF.putExtra("KeyPDF", "1-4");
-                        break;
-                    case "پی دی اف پنج":
-                        intentPDF.putExtra("KeyPDF", "1-5");
-                        break;
-                    case "پی دی اف شش":
-                        intentPDF.putExtra("KeyPDF", "1-6");
-                        break;
-
-                    case "پی دی اف هفت":
-                        intentPDF.putExtra("KeyPDF", "1-7");
-                        break;
-
-                    case "پی دی اف هشت":
-                        intentPDF.putExtra("KeyPDF", "2-8");
-                        break;
-
-                    case "پی دی اف نه":
-                        intentPDF.putExtra("KeyPDF", "2-9");
                         break;
                 }
                 startActivity(intentPDF);
@@ -265,18 +249,31 @@ public class Activity_Posts extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intentPDF = new Intent(Activity_Posts.this, Activity_PDF_View.class);
                 switch (pdfNames2[i]) {
-                    case "پی دی اف یک":
+                    case "آئین نامه اجرایی احراز تصدی شهردار":
                         intentPDF.putExtra("KeyPDF", "2-1");
                         break;
-                    case "پی دی اف دو":
+                    case "آئین نامه حق جلسه شوراهای اسلامی":
                         intentPDF.putExtra("KeyPDF", "2-2");
                         break;
-                    case "پی دی اف سه":
-                        intentPDF.putExtra("KeyPDF", "2-2");
+                    case "آئین نامه ها و دستورالعملهای قانون تشکیلات ووظایف شوراها":
+                        intentPDF.putExtra("KeyPDF", "2-3");
                         break;
-                    case "پی دی اف چهار":
-                        intentPDF.putExtra("KeyPDF", "2-2");
+                    case "آئین نامه های اجرایی شوراهای اسلامی":
+                        intentPDF.putExtra("KeyPDF", "2-4");
                         break;
+                    case "آئین نامه های داخلی شوراهای شهر و شهرستان و استان و عالی لستانها":
+                        intentPDF.putExtra("KeyPDF", "2-5");
+                        break;
+                    case "سفر شوراهای محلی به خارج از کشور":
+                        intentPDF.putExtra("KeyPDF", "2-6");
+                        break;
+                    case "قانون تشكيلات، وظايف و انتخابات شوراهاي اسلامي كشور و انتخاب شهرداران مصوب 1375":
+                        intentPDF.putExtra("KeyPDF", "2-7");
+                        break;
+                    case "قانون تشکیلات شوراهای اسلامی کشوری و انتخابات شوراهای مزبور مصوب 29 تیر 1365 با اصلاحیه های بعدی":
+                        intentPDF.putExtra("KeyPDF", "2-8");
+                        break;
+
                 }
                 startActivity(intentPDF);
                 pdf_selector.dismiss();
@@ -288,7 +285,6 @@ public class Activity_Posts extends AppCompatActivity {
         pdf_selector.show();
 
     }
-
 
     private void AlertDialogPDF3() {
 
@@ -302,18 +298,22 @@ public class Activity_Posts extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intentPDF = new Intent(Activity_Posts.this, Activity_PDF_View.class);
                 switch (pdfNames3[i]) {
-                    case "پی دی اف یک":
+                    case "آئین نامه مالی شهرداری ها به استثنا تهران و مرکز استان":
                         intentPDF.putExtra("KeyPDF", "3-1");
                         break;
-                    case "پی دی اف دو":
+                    case "آئین نامه مالی کلانشهرها و مراکز استان":
                         intentPDF.putExtra("KeyPDF", "3-2");
                         break;
-                    case "پی دی اف سه":
+                    case "آئین نامه مالی":
                         intentPDF.putExtra("KeyPDF", "3-3");
                         break;
-                    case "پی دی اف چهار":
+                    case "حقوق و مزایای شهرداران":
                         intentPDF.putExtra("KeyPDF", "3-4");
                         break;
+                    case "دستورالعملهای مالی":
+                        intentPDF.putExtra("KeyPDF", "3-5");
+                        break;
+
                 }
                 startActivity(intentPDF);
                 pdf_selector.dismiss();
@@ -328,7 +328,6 @@ public class Activity_Posts extends AppCompatActivity {
 
 
     //pdf AlertDialogs ***********************************************
-
 
 
     private void AlertDialogConnectUS() {
