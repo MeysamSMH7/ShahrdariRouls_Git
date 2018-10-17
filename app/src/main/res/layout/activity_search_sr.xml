@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_main"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
     android:orientation="vertical">
 
 
@@ -46,7 +46,7 @@
                         android:id="@+id/ChBSecondLeft"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-android:layout_margin="5dp"
+                        android:layout_margin="5dp"
                         android:layout_weight="0.1"
                         android:background="@drawable/dr_textview"
                         android:drawablePadding="16dp"
@@ -60,7 +60,7 @@ android:layout_margin="5dp"
 
                     <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="0.5">
 
@@ -141,12 +141,12 @@ android:layout_margin="5dp"
                 android:id="@+id/edtTxtSearchinTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 android:background="@drawable/dr_edittext"
+                android:layout_margin="5dp"
+                android:background="@drawable/dr_edittext"
                 android:drawablePadding="16dp"
                 android:hint="جستجو در متن"
                 android:paddingBottom="10dp"
                 android:paddingRight="10dp"
-                android:layout_margin="5dp"
                 android:paddingTop="10dp"
                 android:textColor="#fff"
                 android:textColorHint="#fff" />
@@ -155,12 +155,12 @@ android:layout_margin="5dp"
                 android:id="@+id/btnSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/dr_textview"
                 android:gravity="center"
                 android:padding="16dp"
-                android:layout_margin="5dp"
                 android:text="جستجو کن"
                 android:textColor="#ffffff" />
 
