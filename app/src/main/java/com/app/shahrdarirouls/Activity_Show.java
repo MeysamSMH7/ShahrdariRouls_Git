@@ -15,17 +15,13 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shahrdarirouls.DataBase.DataSource.tb_FavoriteDATASource;
 import com.app.shahrdarirouls.DataBase.DataSource.tb_ShahrdariroulsDATASource;
-import com.app.shahrdarirouls.DataBase.DatabaseManagement;
 import com.app.shahrdarirouls.DataBase.MyDateBase;
 import com.app.shahrdarirouls.DataBase.Table.tb_Favorite;
 import com.app.shahrdarirouls.DataBase.Table.tb_ShahrdariRouls;

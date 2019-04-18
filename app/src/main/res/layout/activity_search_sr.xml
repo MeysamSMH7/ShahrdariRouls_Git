@@ -7,17 +7,12 @@
     android:background="@drawable/bg_main"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar_sr" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ListView
@@ -72,7 +67,7 @@
                             <ListView
                                 android:id="@+id/listSharhOne"
                                 android:layout_width="match_parent"
-                                android:layout_height="200dp"
+                                android:layout_height="150dp"
                                 android:layout_margin="5dp"
                                 android:choiceMode="multipleChoice"
                                 android:visibility="visible" />
@@ -108,11 +103,7 @@
                         android:textColorHint="#fff" />
 
 
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="0.5">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -122,13 +113,13 @@
                             <ListView
                                 android:id="@+id/lstViewShoraMashmol"
                                 android:layout_width="match_parent"
-                                android:layout_height="200dp"
+                                android:layout_height="150dp"
                                 android:layout_margin="5dp"
                                 android:choiceMode="multipleChoice"
                                 android:visibility="visible" />
 
                         </LinearLayout>
-                    </ScrollView>
+
 
 
                 </LinearLayout>
@@ -151,7 +142,8 @@
                 android:textColor="#fff"
                 android:textColorHint="#fff" />
 
-            <TextView
+
+            <life.sabujak.roundedbutton.RoundedButton
                 android:id="@+id/btnSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -161,9 +153,10 @@
                 android:background="@drawable/dr_textview"
                 android:gravity="center"
                 android:padding="16dp"
+                app:buttonColor="@android:color/transparent"
                 android:text="جستجو کن"
-                android:textColor="#ffffff" />
-
+                android:textColor="#ffffff"
+                />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_SE"
@@ -172,7 +165,5 @@
 
 
         </LinearLayout>
-    </ScrollView>
-
 
 </LinearLayout>

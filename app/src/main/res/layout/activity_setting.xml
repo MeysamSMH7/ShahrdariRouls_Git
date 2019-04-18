@@ -8,6 +8,7 @@
     android:background="@drawable/bg_main"
     tools:context=".Activity_Setting">
 
+    <include layout="@layout/toolbar_sr" />
 
     <TextView
         android:layout_width="match_parent"

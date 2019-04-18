@@ -12,4 +12,5 @@ public class tb_ShahrdariRouls {
     public String SharhOne;
     public String ShoraiMashmol;
     public String txtRouls;
- }
+    public Boolean checkBox = false;
+}
